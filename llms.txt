@@ -1,0 +1,26 @@
+# 國立清華大學 UI/UX 設計課程
+
+> 由秦毅數位科技有限公司 AI 科技顧問黃庭豪（布萊恩老師）規劃並授課的 UI/UX 設計課程，12 週從使用者研究到可交付作品集，帶學員走完一套完整的 UI/UX 設計流程，並融入 AI 工具輔助。
+
+## 課程資訊
+- 上課時間：每週三 13:20–16:20，共 12 次課程（9/16–12/9）
+- 上課地點：國立清華大學第二綜合大樓2樓電腦教室II
+- 適合對象：UI/UX 設計初學者
+- 授課單位：秦毅數位科技有限公司（https://www.71next.com/）
+- 授課老師：黃庭豪（布萊恩老師），AI 科技顧問
+
+## 主要頁面
+- [課程總覽](https://nthu.71next.com/): 12 個單元列表、簡報與講義連結、作業繳交規則
+- [Unit 01 設計思考與規劃流程](https://nthu.71next.com/Unit_01/slides.html)
+- [Unit 02 AI 輔助訪談與分析](https://nthu.71next.com/Unit_02/slides.html)
+- [Unit 03 Figma 基本操作](https://nthu.71next.com/Unit_03/slides.html)
+- [Unit 04 產品設計流程](https://nthu.71next.com/Unit_04/from-ia/slides.html)
+- [Unit 05 產品設計基本元素](https://nthu.71next.com/Unit_05/slides.html)
+- [Unit 07 使用者如何看：UI 設計定律與視覺心理學](https://nthu.71next.com/Unit_07/slides.html)
+- [Unit 08 介面組件介紹](https://nthu.71next.com/Unit_08/slides.html)
+- [Unit 09 Design System](https://nthu.71next.com/Unit_09/slides.html)
+- [Unit 11 No-Code 實作](https://nthu.71next.com/Unit_11/slides.html)
+
+## Optional
+- [清華大學課程大綱](https://nthu.71next.com/清華大學課程大綱.md): 完整課綱說明
+- [sitemap.xml](https://nthu.71next.com/sitemap.xml): 全站頁面列表

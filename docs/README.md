@@ -21,6 +21,7 @@
 | [Unit 11 完整教材建置（No-Code 實作）](spec/unit11-no-code.md) | [spec](spec/unit11-no-code.md) | [log](changelog/unit11-no-code.md) | done | 2026-08-29 |
 | [Unit 07／09 補齊課堂練習與回家作業頁面](spec/unit07-unit09-exercises.md) | [spec](spec/unit07-unit09-exercises.md) | [log](changelog/unit07-unit09-exercises.md) | done | 2026-08-29 |
 | [Unit 01「UX 5層架構」層級詳情彈窗](spec/unit01-layer-modal.md) | [spec](spec/unit01-layer-modal.md) | [log](changelog/unit01-layer-modal.md) | done | 2026-09-02 |
+| [全站 SEO／AEO 基礎建設](spec/seo-aeo-setup.md) | [spec](spec/seo-aeo-setup.md) | [log](changelog/seo-aeo-setup.md) | done | 2026-09-14 |
 
 ## 修復紀錄
 
