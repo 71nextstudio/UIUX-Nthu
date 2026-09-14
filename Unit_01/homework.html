@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 01 · 回家作業：AI 協作實驗</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #fbfbfd;
+  --dark: #1d1d1f;
+  --muted: #6e6e73;
+  --accent: #0066cc;
+  --accent2: #0f766e;
+  --accent3: #c2410c;
+  --surface: #f5f5f7;
+  --border: #d2d2d7;
+  --code: #1d1d1f;
+  --max-w: 860px;
+}
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang TC", sans-serif;
+  background: var(--bg);
+  color: var(--dark);
+  -webkit-font-smoothing: antialiased;
+  padding: 28px 22px 88px;
+  line-height: 1.72;
+}
+.page { max-width: var(--max-w); margin: 0 auto; }
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 42px;
+}
+.back-link { color: var(--accent); text-decoration: none; font-size: 13px; font-weight: 700; }
+.back-link::before { content: '← '; }
+.unit-pill {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(0,102,204,.09);
+  padding: 4px 11px;
+  border-radius: 8px;
+}
+.hero { padding-bottom: 34px; margin-bottom: 30px; border-bottom: 1px solid var(--border); }
+.overline {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+h1 { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; margin-bottom: 14px; }
+.sub { color: var(--accent2); font-weight: 700; font-size: 1rem; margin-bottom: 14px; }
+.lead { color: var(--muted); max-width: 720px; font-size: 1rem; }
+.toc {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 22px 24px;
+  margin-bottom: 22px;
+}
+.toc h2 {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.toc ol { list-style: none; counter-reset: toc; }
+.toc li { counter-increment: toc; margin: 8px 0; }
+.toc a { color: var(--dark); text-decoration: none; display: flex; gap: 10px; font-size: .95rem; }
+.toc a:hover { color: var(--accent); }
+.toc a::before {
+  content: counter(toc, decimal-leading-zero);
+  color: var(--accent);
+  font-size: .75rem;
+  font-weight: 800;
+  padding-top: 3px;
+}
+
+.band {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 46px 0 6px;
+  padding-top: 26px;
+  border-top: 2px solid var(--border);
+}
+.band-tag {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--accent);
+  padding: 5px 12px;
+  border-radius: 8px;
+}
+.band-tag.home { background: var(--accent2); }
+.band h2 { font-size: clamp(1.15rem, 2.4vw, 1.5rem); }
+.band-note { color: var(--muted); font-size: .9rem; margin: 6px 0 4px; }
+
+.exercise {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 18px 0;
+  overflow: hidden;
+}
+.exercise.home { border-color: rgba(15,118,110,.28); }
+.exercise-head { padding: 18px 22px; background: var(--surface); border-bottom: 1px solid var(--border); }
+.exercise.home .exercise-head { background: rgba(15,118,110,.05); border-bottom-color: rgba(15,118,110,.2); }
+.exercise-tag {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.exercise.home .exercise-tag { color: var(--accent2); }
+h2 { font-size: clamp(1.25rem, 2.6vw, 1.7rem); line-height: 1.25; }
+.exercise-body { padding: 20px 22px 24px; }
+h3 { font-size: 1.02rem; margin: 20px 0 8px; }
+p { color: #2c2c2e; margin-bottom: 12px; }
+ul, ol { padding-left: 1.1rem; margin: 8px 0 16px; }
+li { margin-bottom: 8px; color: #2c2c2e; }
+strong { color: var(--dark); font-weight: 800; }
+code {
+  font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+  font-size: .88em;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1px 6px;
+  border-radius: 5px;
+}
+.meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.chip {
+  font-size: 12px;
+  color: var(--accent);
+  background: rgba(0,102,204,.08);
+  border: 1px solid rgba(0,102,204,.16);
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-weight: 700;
+}
+.exercise.home .chip { color: var(--accent2); background: rgba(15,118,110,.07); border-color: rgba(15,118,110,.18); }
+
+.table-wrap { overflow-x: auto; margin: 14px 0; -webkit-overflow-scrolling: touch; }
+table { width: 100%; min-width: 620px; border-collapse: collapse; font-size: .92rem; }
+th {
+  text-align: left;
+  color: var(--accent);
+  background: rgba(0,102,204,.06);
+  border-bottom: 2px solid var(--border);
+  padding: 10px 12px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+td { padding: 11px 12px; border-bottom: 1px solid var(--border); color: #2c2c2e; vertical-align: top; }
+td:first-child { color: var(--muted); font-weight: 800; white-space: nowrap; }
+
+.prompt {
+  background: var(--code);
+  color: #f5f5f7;
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin: 14px 0 4px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+  font-size: .8rem;
+  line-height: 1.7;
+}
+.callout {
+  background: rgba(0,102,204,.05);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 14px 16px;
+  margin: 16px 0;
+  color: #2c2c2e;
+}
+.callout.green { background: rgba(15,118,110,.06); border-left-color: var(--accent2); }
+.callout.warn { background: rgba(194,65,12,.06); border-left-color: var(--accent3); }
+.callout a { color: var(--accent); font-weight: 700; }
+
+.check { list-style: none; padding-left: 0; }
+.check li { position: relative; padding-left: 28px; }
+.check li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: .45em;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+}
+
+.card-fields { border: 1px dashed var(--border); border-radius: 8px; padding: 4px 20px; margin: 14px 0; }
+.card-field { padding: 14px 0; border-bottom: 1px dashed var(--border); }
+.card-field:last-child { border-bottom: none; }
+.card-field .num { font-size: 11px; font-weight: 800; color: var(--accent2); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 4px; }
+.card-field .blank { color: var(--muted); font-size: .92rem; }
+
+.foot-nav { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 34px; }
+.foot-nav a {
+  color: var(--accent);
+  background: rgba(0,102,204,.08);
+  border: 1px solid rgba(0,102,204,.18);
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+}
+@media print {
+  body { background: #fff; padding: 0; }
+  .topbar, .toc, .foot-nav { display: none; }
+  .exercise { break-inside: avoid; }
+}
+@media (max-width: 700px) {
+  .topbar { align-items: flex-start; flex-direction: column; }
+  .band { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topbar">
+    <a class="back-link" href="slides.html">回到 Unit 01 簡報</a>
+    <span class="unit-pill">Unit 01</span>
+  </div>
+
+  <div class="hero">
+    <p class="overline">Homework · Week 1</p>
+    <h1>不要急著叫 AI 給答案</h1>
+    <p class="sub">Learning to Think with AI</p>
+    <p class="lead">把同一個問題拿去跟 AI 來回問五輪，看看問題本身會不會因此變得更清楚——這就是整份作業在做的事。挑一個你自己真的會遇到的情境，追問細節、判斷哪裡該信哪裡不該信，是整個過程真正要練的東西。</p>
+  </div>
+
+  <div class="toc">
+    <h2>本頁內容</h2>
+    <ol>
+      <li><a href="#goal">作業目標</a></li>
+      <li><a href="#step1">Step 1 · 選一個你真的會遇到的問題</a></li>
+      <li><a href="#step2">Step 2 · 第一次問 AI（直覺版）</a></li>
+      <li><a href="#step3">Step 3 · 讓 AI 先反問你</a></li>
+      <li><a href="#step4">Step 4 · 跟 AI 一起重新定義問題</a></li>
+      <li><a href="#step5">Step 5 · 讓 AI 當批判者挑戰你</a></li>
+      <li><a href="#card">交件格式：AI Collaboration Card</a></li>
+      <li><a href="#submit">AI 使用界線、繳交清單與評分重點</a></li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="goal">
+    <div class="exercise-head">
+      <p class="exercise-tag">作業目標</p>
+      <h2>不是比答案，是發現三件事</h2>
+      <div class="meta"><span class="chip">個人作業</span><span class="chip">約 90 分鐘</span><span class="chip">任何一種對話型 AI 皆可</span></div>
+    </div>
+    <div class="exercise-body">
+      <p>這份作業想讓你自己發現：</p>
+      <ol>
+        <li><strong>怎麼問，會影響 AI 怎麼回答。</strong></li>
+        <li><strong>AI 可以參與思考過程，而不只是產生答案。</strong></li>
+        <li><strong>AI 的答案不能直接相信，需要判斷、修正與驗證。</strong></li>
+      </ol>
+      <p>整份作業是同一個問題，跟 AI 往返五輪對話，最後整理成一頁 <strong>AI Collaboration Card</strong> 交出來。9/23 上課會抽點分享，開場先問「誰的問題在對話之後變了」。</p>
+    </div>
+  </div>
+
+  <div class="exercise" id="step1">
+    <div class="exercise-head">
+      <p class="exercise-tag">Step 1</p>
+      <h2>選一個你真的會遇到的問題</h2>
+      <div class="meta"><span class="chip">約 10 分鐘</span><span class="chip">不用 AI，自己想</span></div>
+    </div>
+    <div class="exercise-body">
+      <p>從生活或學習中，找一個<strong>最近真的會遇到</strong>的問題。不要選「AI 是什麼？」這種 Google 查得到標準答案的問題——最好是沒有唯一正確答案、需要理解情境或做判斷的問題。下面是幾個例子，不必照抄，換成你自己真正在意的版本更好：</p>
+      <ul>
+        <li>怎麼改善一個排隊排很久的地方？</li>
+        <li>我要怎麼練習一項技能，又能知道自己卡在哪裡？</li>
+        <li>如何快速理解一個自己不熟悉的專業領域？</li>
+        <li>怎麼向完全沒有背景知識的人，解釋一個複雜的概念？</li>
+        <li>怎麼讓一般人願意關心一個他們平常不在意的議題？</li>
+        <li>某種常見的焦慮或壓力，可以從哪些角度理解？</li>
+        <li>怎麼讓一群人更願意在討論裡開口？</li>
+        <li>如何為一種抽象的感受（例如孤獨、安心）設計一個具體的表現方式？</li>
+      </ul>
+      <div class="callout green"><strong>順便：</strong>如果這個問題剛好也是你想放進期末專題的方向，可以直接選這一題。</div>
+    </div>
+  </div>
+
+  <div class="exercise" id="step2">
+    <div class="exercise-head">
+      <p class="exercise-tag">Step 2</p>
+      <h2>第一次問 AI（直覺版）</h2>
+      <div class="meta"><span class="chip">約 10 分鐘</span></div>
+    </div>
+    <div class="exercise-body">
+      <p>規則很簡單：<strong>用你平常最直覺的方式問 AI，一次就好。</strong>例如把 Step 1 的問題直接丟過去，像「怎麼改善大學生去學校餐廳排隊的問題？」這樣問。</p>
+      <p>把你的問題、Prompt、AI 的完整回答都保存下來（複製貼上即可，不用重寫得漂亮），然後自己打分：</p>
+      <div class="callout"><strong>這個答案有幫助嗎？0～10 分，為什麼？</strong>大多數人這一步會發現，AI 講得頭頭是道，但常常「對，但是沒什麼用」——這是你會在這份作業裡遇到的第一個 UX moment。</div>
+    </div>
+  </div>
+
+  <div class="exercise" id="step3">
+    <div class="exercise-head">
+      <p class="exercise-tag">Step 3</p>
+      <h2>讓 AI 先反問你</h2>
+      <div class="meta"><span class="chip">約 15 分鐘</span></div>
+    </div>
+    <div class="exercise-body">
+      <p>這一輪不要叫 AI 直接回答，而是叫它反過來訪問你。把下面這段提示詞貼給 AI（換成你在 Step 1 選的問題）：</p>
+      <div class="prompt">我正在處理這個問題：
+「[你在 Step 1 選的問題]」
+
+先不要告訴我答案。
+請扮演一位顧問，先問我 5 個問題，幫助你了解我的情境、目標、限制與真正的需求。
+一次問一個問題，我回答後你再繼續。</div>
+      <p>認真回答 AI 問的每一題，感受一下「被問一個好問題」是什麼感覺。</p>
+    </div>
+  </div>
+
+  <div class="exercise" id="step4">
+    <div class="exercise-head">
+      <p class="exercise-tag">Step 4</p>
+      <h2>跟 AI 一起重新定義問題</h2>
+      <div class="meta"><span class="chip">約 10 分鐘</span></div>
+    </div>
+    <div class="exercise-body">
+      <p>回答完 Step 3 的 5 個問題後，接著貼這段：</p>
+      <div class="prompt">根據剛才的對話，請幫我整理：
+
+① 原本我以為的問題
+② 你認為真正的問題可能是什麼
+③ 有哪些我原本沒有考慮到的因素
+④ 如果要繼續研究，還缺哪些資訊
+
+最後幫我重新寫成 3 個值得探索的問題。</div>
+      <p>這一步練的已經不是怎麼下 Prompt，而是 <strong>Problem Framing</strong>——把模糊的困擾整理成可以被研究、被設計的問題，這是 UI/UX 最重要的能力之一。</p>
+    </div>
+  </div>
+
+  <div class="exercise" id="step5">
+    <div class="exercise-head">
+      <p class="exercise-tag">Step 5</p>
+      <h2>讓 AI 當批判者挑戰你</h2>
+      <div class="meta"><span class="chip">約 10 分鐘</span></div>
+    </div>
+    <div class="exercise-body">
+      <p>最後一輪，告訴 AI 不要再順著你：</p>
+      <div class="prompt">現在不要再支持我的想法。
+
+請扮演一個批判者，找出目前分析中的：
+
+- 3 個可能錯誤的假設
+- 3 個需要查證的資訊
+- 2 個不同立場
+- 1 個我可能完全忽略的問題</div>
+      <p>你會體會到：AI 不一定只是答案產生器，也可以當你的 Devil's Advocate。</p>
+    </div>
+  </div>
+
+  <div class="band">
+    <span class="band-tag home">交件格式</span>
+    <h2>AI Collaboration Card</h2>
+  </div>
+  <p class="band-note">五輪對話結束後，整理成一頁文件，不是把整段對話原封不動貼上去——要濃縮成別人一眼看得懂的重點。</p>
+
+  <div class="exercise home" id="card">
+    <div class="exercise-head">
+      <p class="exercise-tag">Card</p>
+      <h2>八個欄位，寫成一頁 Google 文件或 Notion 頁面</h2>
+      <div class="meta"><span class="chip">約 15–20 分鐘整理</span></div>
+    </div>
+    <div class="exercise-body">
+      <div class="card-fields">
+        <div class="card-field"><p class="num">① 使用的 AI 工具／模型</p><p class="blank">例如 ChatGPT（GPT-5.1）、Claude（Sonnet 5）、Gemini 3 等，寫清楚是哪一個，五輪對話盡量用同一個。</p></div>
+        <div class="card-field"><p class="num">② 我的問題</p><p class="blank">我原本想解決＿＿＿＿＿＿＿＿。</p></div>
+        <div class="card-field"><p class="num">③ 第一次問 AI</p><p class="blank">我的 Prompt、AI 的回答、我給的分數（__/10）與理由。</p></div>
+        <div class="card-field"><p class="num">④ AI 問了我哪些重要問題</p><p class="blank">從 Step 3 的 5 題裡，選出最重要的 3 題。</p></div>
+        <div class="card-field"><p class="num">⑤ 問題有沒有改變</p><p class="blank">原本是什麼、後來變成什麼。</p></div>
+        <div class="card-field"><p class="num">⑥ AI 幫我最多的地方</p><p class="blank">勾選：找資料 / 解釋概念 / 整理資訊 / 發想 / 問問題 / 挑戰想法 / 寫作 / 分析 / 其他</p></div>
+        <div class="card-field"><p class="num">⑦ AI 最不能相信的地方是什麼</p><p class="blank">具體指出一處 AI 講錯、講過頭或憑空腦補的地方。</p></div>
+        <div class="card-field"><p class="num">⑧ 如果再做一次，我會怎麼跟 AI 合作</p><p class="blank">一段真實的反思，不是客套話。</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="band">
+    <span class="band-tag home">繳交</span>
+    <h2>AI 使用界線、繳交清單與評分重點</h2>
+  </div>
+
+  <div class="exercise home" id="submit">
+    <div class="exercise-head">
+      <p class="exercise-tag">Submission</p>
+      <h2>對應 Unit 01 回家作業</h2>
+      <div class="meta"><span class="chip">文件連結 1 份</span><span class="chip">9/23 上課抽點分享</span></div>
+    </div>
+    <div class="exercise-body">
+      <h3>AI 使用界線</h3>
+      <p>這份作業本身就是在練習跟 AI 合作，所以界線不是「能不能用 AI」，而是<strong>對話記錄能不能造假</strong>：</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th></th><th>可以</th><th>不可以</th></tr></thead>
+          <tbody>
+            <tr><td>對話記錄</td><td>如實複製貼上 Step 2–5 跟 AI 的完整往返，不用重寫得漂亮</td><td>事後補寫、美化或簡化對話內容，讓它看起來比實際上更有戲劇性</td></tr>
+            <tr><td>流程順序</td><td>照 Step 2→3→4→5 的順序，一輪一輪來</td><td>跳過 Step 3 或 Step 5，直接請 AI 一次生成全部內容再假裝分輪對話</td></tr>
+            <tr><td>Card 內容</td><td>用 AI 幫你把長對話濃縮、整理措辭</td><td>讓 AI 幫你寫第 ⑥、⑦ 欄——這兩題必須是你自己的觀察</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>要交的東西</h3>
+      <ul class="check">
+        <li>Step 1 選定的問題，一句話</li>
+        <li>Step 2–5 四輪對話的完整記錄（Prompt + AI 回答）</li>
+        <li>一頁 AI Collaboration Card（八個欄位都填）</li>
+      </ul>
+      <h3>評分重點</h3>
+      <ul class="check">
+        <li><strong>Step 1–2 提問與評分：</strong>附上實際 Prompt 與 AI 完整回答，評分理由具體指出哪裡有用、哪裡沒用。</li>
+        <li><strong>Step 3 AI 反問你：</strong>認真回答 AI 提出的 5 個問題，回答有補充到原本沒講的情境。</li>
+        <li><strong>Step 4 重新定義問題：</strong>清楚寫出原問題與新問題的落差，3 個新問題確實比原本更聚焦、更可執行。</li>
+        <li><strong>Step 5 AI 挑戰你：</strong>完整列出 AI 提出的假設、查證項、立場與忽略點，並寫出自己同意或反駁的理由。</li>
+        <li><strong>Card 完整度與反思：</strong>八個欄位都填，第 ⑦、⑧ 題有具體、真實的觀察。</li>
+      </ul>
+      <div class="callout"><strong>特別說明：</strong>這份作業看的是<strong>你跟 AI 對話的過程有沒有真實發生、問題有沒有真的變清楚</strong>，不是 AI 給的答案好不好。</div>
+    </div>
+  </div>
+
+  <div class="foot-nav">
+    <a href="slides.html" target="_blank" rel="noopener">Unit 01 簡報</a>
+    <a href="design-thinking.html" target="_blank" rel="noopener">講義：設計思考</a>
+    <a href="../index.html" target="_blank" rel="noopener">回到課程總覽</a>
+  </div>
+</div>
+</body>
+</html>
