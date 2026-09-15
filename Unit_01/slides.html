@@ -602,15 +602,16 @@ h2 {
 /* ── Instructor bio ──────────────────────── */
 .bio-wrap {
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
+  grid-template-columns: auto 1fr;
   gap: 48px;
   align-items: center;
   margin-top: 32px;
 }
 
 .bio-photo {
+  width: 500px;
   aspect-ratio: 3 / 4;
-  border: 1.5px dashed var(--border);
+  border: 1.5px solid var(--border);
   border-radius: 16px;
   background: var(--surface);
   display: flex;
@@ -618,6 +619,13 @@ h2 {
   justify-content: center;
   font-size: .85rem;
   color: var(--muted);
+  overflow: hidden;
+}
+
+.bio-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* ── External link pill ─────────────────── */
@@ -676,7 +684,7 @@ h2 {
   .agenda-grid { grid-template-columns: 1fr; gap: 10px; margin-top: 16px; }
   .pyr-wrap { grid-template-columns: 1fr; gap: 20px; margin-top: 16px; }
   .bio-wrap { grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
-  .bio-photo { aspect-ratio: 16 / 9; }
+  .bio-photo { width: 100%; max-width: 220px; aspect-ratio: 3 / 4; margin: 0 auto; }
   .pyr-legend { height: auto; gap: 12px; }
   .cmp-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .blist { margin-top: 16px; gap: 8px; }
@@ -733,7 +741,7 @@ h2 {
       <p class="overline">Instructor</p>
       <h1>講師自我介紹</h1>
       <div class="bio-wrap">
-        <div class="bio-photo">照片待補</div>
+        <div class="bio-photo"><img src="resources/bryant.png" alt="講師 bryant 黃瀚霆"></div>
         <ul class="blist plain">
           <li><span class="hl">bryant · 黃瀚霆</span></li>
           <li>秦毅數位有限公司 負責人</li>
