@@ -577,7 +577,7 @@ tr:last-child td { border-bottom: none; }
       <table>
         <thead><tr><th>症狀</th><th>使用者看到的結果</th><th>怎麼修</th></tr></thead>
         <tbody>
-          <tr><td>間距平均分配</td><td>卡片內 16、卡片之間也 16，看不出哪些東西是一組的</td><td>組內縮到 8，組間拉到 32。用大小差異做分組（Unit 08 講義<a href="../Unit_08/article.html#s8">第 8 節</a>的接近性）</td></tr>
+          <tr><td>間距平均分配</td><td>卡片內 16、卡片之間也 16，看不出哪些東西是一組的</td><td>組內縮到 8，組間拉到 32。用大小差異做分組（Unit 08 講義<a href="../../Unit_08/article.html#s8">第 8 節</a>的接近性）</td></tr>
           <tr><td>出現 13、17、22</td><td>說不上哪裡怪，但整體不俐落</td><td>回到風格板的階梯，就近選一個合法值</td></tr>
           <tr><td>左邊緣沒對齊</td><td>標題、內文、按鈕各差幾 px，畫面像沒排好</td><td>拉輔助線檢查，或全選按對齊</td></tr>
           <tr><td>版心邊界不一致</td><td>這頁左右各留 24、下一頁留 20，換頁時整個畫面會跳一下</td><td>把版心邊界寫進風格板，所有頁面共用同一組數字</td></tr>
@@ -609,8 +609,8 @@ tr:last-child td { border-bottom: none; }
 
     <h3>用 Component 與 Variants 管理，避免複製貼上</h3>
     <p>五種狀態如果畫成五顆各自獨立的按鈕，之後每改一次主色，就會變成五個地方乘上所有頁面——實務上很容易漏。</p>
-    <p>更穩定的做法是把按鈕做成一個 <strong>Component</strong>，再用 <strong>Variants</strong> 把狀態掛成同一個元件的不同版本（建法見 Unit 08 講義<a href="../Unit_08/article.html#s11">第 11 節</a>）。這樣做有兩個好處：改一次主色，所有頁面一起變；而且工程師點開元件，就能直接看到這顆按鈕總共有哪幾種狀態。</p>
-    <div class="callout warn"><strong>停用狀態不能只把顏色調淡。</strong>淡到看不清楚就變成對比度不足（Unit 08 講義<a href="../Unit_08/article.html#s6">第 6 節</a>的 4.5:1 門檻）。更好的做法是：降低飽和度、拿掉陰影，但保留文字可讀；並且在旁邊說明為什麼不能按（「請先填寫必填欄位」）。</div>
+    <p>更穩定的做法是把按鈕做成一個 <strong>Component</strong>，再用 <strong>Variants</strong> 把狀態掛成同一個元件的不同版本（建法見 Unit 08 講義<a href="../../Unit_08/article.html#s11">第 11 節</a>）。這樣做有兩個好處：改一次主色，所有頁面一起變；而且工程師點開元件，就能直接看到這顆按鈕總共有哪幾種狀態。</p>
+    <div class="callout warn"><strong>停用狀態不能只把顏色調淡。</strong>淡到看不清楚就變成對比度不足（Unit 08 講義<a href="../../Unit_08/article.html#s6">第 6 節</a>的 4.5:1 門檻）。更好的做法是：降低飽和度、拿掉陰影，但保留文字可讀；並且在旁邊說明為什麼不能按（「請先填寫必填欄位」）。</div>
   </section>
 
   <section class="section" id="s4">
@@ -769,7 +769,7 @@ tr:last-child td { border-bottom: none; }
       <figcaption>要看的是三個東西同時出現：<strong>說人話的標題</strong>（Oh no!）、<strong>發生了什麼</strong>（Something went wrong, we're digging for a solution）、<strong>一條出路</strong>（Go home）。這一頁同時滿足第 9 條與第 3 條。</figcaption>
     </figure>
     <p>71next 的三個 Tip：<strong>使用傳統的錯誤訊息視覺效果（例如粗體、紅色文字）、用使用者能理解的語言說出哪裡錯、給一個能立刻解決錯誤的捷徑。</strong></p>
-    <div class="callout warn">紅字是慣例，但<strong>不能只靠顏色</strong>——色盲使用者分不出紅綠。錯誤訊息旁邊要有圖示或文字說明，這一點與 Unit 08 講義<a href="../Unit_08/article.html#s6">第 6 節</a>的語意色規則一致。</div>
+    <div class="callout warn">紅字是慣例，但<strong>不能只靠顏色</strong>——色盲使用者分不出紅綠。錯誤訊息旁邊要有圖示或文字說明，這一點與 Unit 08 講義<a href="../../Unit_08/article.html#s6">第 6 節</a>的語意色規則一致。</div>
 
     <h3>#10 教學指示與幫助（Help and Documentation）</h3>
     <p>介面應該提供簡易教學，讓新的使用者迅速上手。最理想的狀況是系統不需要任何額外解釋，但有時候還是有必要提供文件，幫助使用者了解如何完成他的任務。</p>
@@ -913,10 +913,10 @@ tr:last-child td { border-bottom: none; }
   </ul>
   <h3>前面單元的相關段落</h3>
   <ul>
-    <li><a href="../Unit_08/article.html#s11">Unit 08 講義第 11 節：從風格板長成設計系統</a> — Component、Variants 與 Styles 的建法，本單元不重複講。</li>
-    <li><a href="../Unit_08/article.html#s8">Unit 08 講義第 8 節：完形心理學</a> — 間距分組背後的接近性與共同區域。</li>
-    <li><a href="../Unit_07/article.html">Unit 07 講義：狀態設計與 Wireflow</a> — 空狀態、錯誤狀態、載入狀態的畫法，本單元把它們上色。</li>
-    <li><a href="../Unit_09/usability-heuristics.html">Unit 09 延伸教材：十大易用性原則與檢查表實務</a> — 另一份整理，想看不同講法可以對照。</li>
+    <li><a href="../../Unit_08/article.html#s11">Unit 08 講義第 11 節：從風格板長成設計系統</a> — Component、Variants 與 Styles 的建法，本單元不重複講。</li>
+    <li><a href="../../Unit_08/article.html#s8">Unit 08 講義第 8 節：完形心理學</a> — 間距分組背後的接近性與共同區域。</li>
+    <li><a href="../../Unit_07/article.html">Unit 07 講義：狀態設計與 Wireflow</a> — 空狀態、錯誤狀態、載入狀態的畫法，本單元把它們上色。</li>
+    <li><a href="../../Unit_11/reference-web-spec/usability-heuristics.html">Unit 11 延伸教材：十大易用性原則與檢查表實務</a> — 另一份整理，想看不同講法可以對照。</li>
   </ul>
 </div>
 
@@ -925,8 +925,8 @@ tr:last-child td { border-bottom: none; }
   <a href="exercises.html">課堂練習與回家作業</a>
   <a href="#s9">十條檢查表</a>
   <a href="https://www.71next.com/userDoc/10-usability-heuristics/" target="_blank" rel="noopener">71NEXT：10 大易用性</a>
-  <a href="../Unit_08/article.html">Unit 08 講義：風格發想與建立</a>
-  <a href="../index.html">回到課程總覽</a>
+  <a href="../../Unit_08/article.html">Unit 08 講義：風格發想與建立</a>
+  <a href="../../index.html">回到課程總覽</a>
 </div>
 
 <script>
