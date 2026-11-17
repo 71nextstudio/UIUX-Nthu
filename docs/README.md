@@ -22,6 +22,7 @@
 | [Unit 07／09 補齊課堂練習與回家作業頁面](spec/unit07-unit09-exercises.md) | [spec](spec/unit07-unit09-exercises.md) | [log](changelog/unit07-unit09-exercises.md) | done | 2026-08-29 |
 | [Unit 01「UX 5層架構」層級詳情彈窗](spec/unit01-layer-modal.md) | [spec](spec/unit01-layer-modal.md) | [log](changelog/unit01-layer-modal.md) | done | 2026-09-02 |
 | [全站 SEO／AEO 基礎建設](spec/seo-aeo-setup.md) | [spec](spec/seo-aeo-setup.md) | [log](changelog/seo-aeo-setup.md) | done | 2026-09-14 |
+| [Unit 09 改以 Design System 為主軸](spec/unit09-design-system.md) | [spec](spec/unit09-design-system.md) | [log](changelog/unit09-design-system.md) | done | 2026-11-17 |
 
 ## 修復紀錄
 

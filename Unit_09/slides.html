@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unit 09 · Design System：用 AI 撰寫設計規範文件</title>
+<title>Unit 09 · Design System：Tokens、元件庫與規範文件</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
@@ -173,6 +173,12 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
 #ctrls button:hover, #ctrls button:focus-visible { background: var(--accent); outline: 2px solid #fff; outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) { .slide, #prog { transition: none; } }
 
+/* 行內連結 */
+.slide-body a.ilink { color: var(--accent); font-weight: 700; text-decoration: none; border-bottom: 1px solid rgba(0,102,204,.35); }
+.slide.dark .slide-body a.ilink { color: #58a6ff; border-bottom-color: rgba(88,166,255,.42); }
+.slide code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .9em; background: var(--surface); border: 1px solid var(--border); padding: 1px 7px; border-radius: 5px; }
+.slide.dark code { background: #2b2d32; border-color: #3b3d42; color: #e6e6e9; }
+
 /* 封面回到課程總覽 */
 .to-index { font-size: 11px; font-weight: 700; letter-spacing: .04em; color: currentColor;
             opacity: .55; text-decoration: underline; text-underline-offset: 3px;
@@ -204,8 +210,8 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
     <div class="slide-body phone-stage">
       <div>
         <p class="cover-eyebrow">Design System</p>
-        <h1>用 AI 撰寫<br>設計規範文件</h1>
-        <p class="cover-sub">案例：本班 APP UI 設計規範 · iOS Human Interface Guidelines × Android Material Design</p>
+        <h1>Design System：<br>Tokens、元件庫<br>與規範文件</h1>
+        <p class="cover-sub">Figma Variables · 元件庫與 Variants · 規範文件案例：本班 APP UI 設計規範 · 用 AI 撰寫你自己的規範</p>
       </div>
       <div class="phone" aria-hidden="true">
         <div class="status"><span>9:41</span><span>5G&nbsp;&nbsp;100%</span></div>
@@ -217,12 +223,113 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
     <div class="slide-foot"><span class="course-label">UI/UX 設計實務</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide dark" data-screen-label="02 規範文件是什麼">
+  <section class="slide dark" data-screen-label="02 Design System 三層">
+    <div class="slide-head"><span class="unit-pill">Design System</span><span class="slide-num"></span></div>
+    <div class="slide-body">
+      <p class="cover-eyebrow">Three layers</p>
+      <h2>同一個藍色有三種色碼，<br>就是還沒有 Design System</h2>
+      <div class="grid-3">
+        <div class="panel"><h3>Tokens（數值層）</h3><p>顏色、字級、間距、圓角各取一個名字。Figma 用 Variables 存。</p></div>
+        <div class="panel"><h3>Components（元件層）</h3><p>用 tokens 組出按鈕、輸入框、卡片。改主元件，實例跟著更新。</p></div>
+        <div class="panel"><h3>Guidelines（規範層）</h3><p>什麼情況用哪個元件、為什麼、例外怎麼處理。寫成文件。</p></div>
+      </div>
+      <p class="cover-sub" style="margin-top:32px">Tokens 決定用哪些數字，元件決定這些數字組成什麼，規範決定什麼時候用。→ <a class="ilink" href="article.html#s1" target="_blank" rel="noopener">講義 §1</a></p>
+    </div>
+    <div class="slide-foot"><span class="course-label">Design System</span><div class="dots"></div></div>
+  </section>
+
+  <section class="slide" data-screen-label="03 Design Tokens">
+    <div class="slide-head"><span class="unit-pill">Design Tokens</span><span class="slide-num"></span></div>
+    <div class="slide-body">
+      <p class="cover-eyebrow">Name the value</p>
+      <h2>Token 是有名字的設計數值</h2>
+      <table class="comparison">
+        <thead><tr><th>層級</th><th>名稱</th><th>值</th><th>誰用它</th></tr></thead>
+        <tbody>
+          <tr><td>原始值</td><td><code>blue.600</code></td><td><code>#0066CC</code></td><td>只給語意 token 引用</td></tr>
+          <tr><td>原始值</td><td><code>space.4</code></td><td><code>16</code></td><td>只給語意 token 引用</td></tr>
+          <tr><td>語意值</td><td><code>color.action.primary</code></td><td>→ <code>blue.600</code></td><td>主要按鈕底色</td></tr>
+          <tr><td>語意值</td><td><code>space.inset.card</code></td><td>→ <code>space.4</code></td><td>卡片內距</td></tr>
+        </tbody>
+      </table>
+      <p class="cover-sub" style="margin-top:28px">✕ <code>color.red</code> ✓ <code>color.text.danger</code>：名字描述用途，不描述外觀——改版或深色模式時值會換，用途不會。→ <a class="ilink" href="article.html#s2" target="_blank" rel="noopener">講義 §2</a></p>
+    </div>
+    <div class="slide-foot"><span class="course-label">Design System</span><div class="dots"></div></div>
+  </section>
+
+  <section class="slide dark" data-screen-label="04 Figma Variables">
+    <div class="slide-head"><span class="unit-pill">Figma Variables</span><span class="slide-num"></span></div>
+    <div class="slide-body">
+      <p class="cover-eyebrow">Collections and modes</p>
+      <h2>一個變數，淺色一個值、深色一個值</h2>
+      <div class="grid-3">
+        <div class="panel"><h3>Collection</h3><p>一組變數加上它們的 mode。建議分 Primitives（色盤、級距）和 Semantic（用途）兩個。</p></div>
+        <div class="panel"><h3>Mode</h3><p>collection 裡的一欄值，每個變數只存一個。Light／Dark 是最常見的兩個 mode。</p></div>
+        <div class="panel"><h3>Aliasing</h3><p>變數的值可以是另一個變數：<code>color/action/primary</code> → <code>blue/600</code>。</p></div>
+      </div>
+      <p class="cover-sub" style="margin-top:32px">六種類型：Color、Number、String、Boolean、Timing、Easing。這堂課主要用 Color（顏色）和 Number（字級、間距、圓角）。</p>
+    </div>
+    <div class="slide-foot"><span class="course-label">Design System</span><div class="dots"></div></div>
+  </section>
+
+  <section class="slide" data-screen-label="05 Variables 與 Styles">
+    <div class="slide-head"><span class="unit-pill">Variables vs. Styles</span><span class="slide-num"></span></div>
+    <div class="slide-body">
+      <p class="cover-eyebrow">Not either-or</p>
+      <h2>Variables 存單一的值，Styles 存一組值</h2>
+      <table class="comparison">
+        <thead><tr><th>需求</th><th>Variables</th><th>Styles</th></tr></thead>
+        <tbody>
+          <tr><td>單一顏色</td><td>✓ 可以 alias、可以切 mode</td><td>Color Style 可以，但沒有 mode</td></tr>
+          <tr><td>間距、圓角</td><td>✓ Number 變數</td><td>—</td></tr>
+          <tr><td>漸層</td><td>—</td><td>✓ 多個值組成一個屬性</td></tr>
+          <tr><td>整組文字樣式</td><td>字級、行高可以是 Number 變數</td><td>✓ Text Style 包起來，裡面引用變數</td></tr>
+        </tbody>
+      </table>
+      <p class="cover-sub" style="margin-top:28px">方案限制：Starter 沒有多 mode；Professional 每個 collection 最多 10 個 mode。發布成團隊 Library 需要付費或教育方案。→ <a class="ilink" href="article.html#s3" target="_blank" rel="noopener">講義 §3</a></p>
+    </div>
+    <div class="slide-foot"><span class="course-label">Design System</span><div class="dots"></div></div>
+  </section>
+
+  <section class="slide dark" data-screen-label="06 元件庫與 Variants">
+    <div class="slide-head"><span class="unit-pill">Components</span><span class="slide-num"></span></div>
+    <div class="slide-body">
+      <p class="cover-eyebrow">Main component, instances, variants</p>
+      <h2>改主元件，實例跟著更新</h2>
+      <div class="grid-2">
+        <div class="panel"><h3>Variant property：樣子真的不一樣</h3><ul class="plain-list"><li>State：Default、Pressed、Loading、Disabled</li><li>Size：S、M、L</li></ul></div>
+        <div class="panel"><h3>其他 property：不用拆 variant</h3><ul class="plain-list"><li>Boolean：圖示開或關</li><li>Instance swap：換另一個 icon</li><li>Text：按鈕文案</li></ul></div>
+      </div>
+      <p class="cover-sub" style="margin-top:32px">同檔案的實例馬上更新，其他檔案要等 Library 重新發布。4 種狀態 × 3 種尺寸 × 有無圖示 = 24 個 variant；只是顯示或隱藏的差異，交給 Boolean property。→ <a class="ilink" href="article.html#s4" target="_blank" rel="noopener">講義 §4</a></p>
+    </div>
+    <div class="slide-foot"><span class="course-label">Design System</span><div class="dots"></div></div>
+  </section>
+
+  <section class="slide" data-screen-label="07 元件只認 tokens">
+    <div class="slide-head"><span class="unit-pill">Components</span><span class="slide-num"></span></div>
+    <div class="slide-body">
+      <p class="cover-eyebrow">Bind, don't hard-code</p>
+      <h2>元件裡只用變數，不寫死數字</h2>
+      <table class="comparison">
+        <thead><tr><th>按鈕的部位</th><th>綁定的變數</th></tr></thead>
+        <tbody>
+          <tr><td>底色</td><td><code>color/action/primary</code></td></tr>
+          <tr><td>文字色</td><td><code>color/text/on-action</code></td></tr>
+          <tr><td>左右內距</td><td><code>space/inset/button</code></td></tr>
+          <tr><td>圓角</td><td><code>radius/md</code></td></tr>
+        </tbody>
+      </table>
+      <p class="cover-sub" style="margin-top:28px">檢查方法：把 frame 切到 Dark mode，沒跟著換色的圖層，多半是還寫死色碼——也可能是兩個 mode 的值剛好一樣，或子圖層另外指定了 mode。接下來看規範層：一份完整的 APP UI 設計規範長什麼樣子。</p>
+    </div>
+    <div class="slide-foot"><span class="course-label">Design System</span><div class="dots"></div></div>
+  </section>
+
+  <section class="slide dark" data-screen-label="08 規範文件是什麼">
     <div class="slide-head"><span class="unit-pill">Worked Example</span><span class="slide-num"></span></div>
     <div class="slide-body">
       <p class="cover-eyebrow">What a spec doc is</p>
       <h1>把「怎麼做才對」<br>寫成規則</h1>
-      <p class="cover-sub">好的規範文件讓別人不用問你就能照著做。接下來用本班「APP UI 設計規範」當範例：它怎麼把 iOS／Android 的平台差異，拆成規則、數字與 Do/Don't。</p>
+      <p class="cover-sub">Tokens 和元件解決「長得一致」，規範文件解決「用得一致」。好的規範文件讓別人不用問你就能照著做。接下來用本班「APP UI 設計規範」當範例：它怎麼把 iOS／Android 的平台差異，拆成規則、數字與 Do/Don't。</p>
       <div class="metric-row">
         <div class="metric"><b>手指</b><span>沒有滑鼠游標，觸控範圍與間距直接影響操作成功率。</span></div>
         <div class="metric"><b>系統</b><span>狀態列、鍵盤、手勢區與權限視窗都屬於使用情境。</span></div>
@@ -232,7 +339,7 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
     <div class="slide-foot"><span class="course-label">APP UI 設計規範</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide" data-screen-label="03 單元成果">
+  <section class="slide" data-screen-label="09 單元成果">
     <div class="slide-head"><span class="unit-pill">Outcome</span><span class="slide-num"></span></div>
     <div class="slide-body">
       <p class="cover-eyebrow">Learning outcome</p>
@@ -247,7 +354,7 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
     <div class="slide-foot"><span class="course-label">APP UI 設計規範</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide" data-screen-label="04 iOS 與 Android 的共同目標">
+  <section class="slide" data-screen-label="10 iOS 與 Android 的共同目標">
     <div class="slide-head"><span class="unit-pill">Platforms</span><span class="slide-num"></span></div>
     <div class="slide-body">
       <p class="cover-eyebrow">Same goal, different conventions</p>
@@ -260,7 +367,7 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
     <div class="slide-foot"><span class="course-label">APP UI 設計規範</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide dark" data-screen-label="05 設計指南不是上架規定">
+  <section class="slide dark" data-screen-label="11 設計指南不是上架規定">
     <div class="slide-head"><span class="unit-pill">Practice</span><span class="slide-num"></span></div>
     <div class="slide-body">
       <p class="cover-eyebrow">Guideline vs. Store Policy</p>
@@ -274,7 +381,7 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
     <div class="slide-foot"><span class="course-label">APP UI 設計規範</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide dark" data-screen-label="06 邏輯單位與物理像素">
+  <section class="slide dark" data-screen-label="12 邏輯單位與物理像素">
     <div class="slide-head"><span class="unit-pill">Units</span><span class="slide-num"></span></div>
     <div class="slide-body">
       <p class="cover-eyebrow">Logical size vs. physical pixels</p>
@@ -288,7 +395,7 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
     <div class="slide-foot"><span class="course-label">APP UI 設計規範</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide" data-screen-label="07 iOS 的 pt 與倍率">
+  <section class="slide" data-screen-label="13 iOS 的 pt 與倍率">
     <div class="slide-head"><span class="unit-pill">iOS Units</span><span class="slide-num"></span></div>
     <div class="slide-body">
       <p class="cover-eyebrow">Point-based layout</p>
@@ -303,7 +410,7 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
     <div class="slide-foot"><span class="course-label">APP UI 設計規範</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide" data-screen-label="08 畫布是基準不是唯一尺寸">
+  <section class="slide" data-screen-label="14 畫布是基準不是唯一尺寸">
     <div class="slide-head"><span class="unit-pill">Canvas</span><span class="slide-num"></span></div>
     <div class="slide-body">
       <p class="cover-eyebrow">Adaptive canvas</p>
@@ -321,7 +428,7 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
     <div class="slide-foot"><span class="course-label">APP UI 設計規範</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide" data-screen-label="09 Safe Area 保留可操作空間">
+  <section class="slide" data-screen-label="15 Safe Area 保留可操作空間">
     <div class="slide-head"><span class="unit-pill">Safe Area</span><span class="slide-num"></span></div>
     <div class="slide-body phone-stage">
       <div>
@@ -338,7 +445,7 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
     <div class="slide-foot"><span class="course-label">APP UI 設計規範</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide" data-screen-label="10 觸控目標大於視覺圖示">
+  <section class="slide" data-screen-label="16 觸控目標大於視覺圖示">
     <div class="slide-head"><span class="unit-pill">Touch</span><span class="slide-num"></span></div>
     <div class="slide-body">
       <p class="cover-eyebrow">Hit target</p>
@@ -352,7 +459,7 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
     <div class="slide-foot"><span class="course-label">APP UI 設計規範</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide dark" data-screen-label="11 導覽呈現資訊架構">
+  <section class="slide dark" data-screen-label="17 導覽呈現資訊架構">
     <div class="slide-head"><span class="unit-pill">Navigation</span><span class="slide-num"></span></div>
     <div class="slide-body">
       <p class="cover-eyebrow">Information architecture in motion</p>
@@ -368,7 +475,7 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
     <div class="slide-foot"><span class="course-label">APP UI 設計規範</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide" data-screen-label="12 iOS Tab Bar">
+  <section class="slide" data-screen-label="18 iOS Tab Bar">
     <div class="slide-head"><span class="unit-pill">iOS Navigation</span><span class="slide-num"></span></div>
     <div class="slide-body phone-stage">
       <div>
@@ -381,7 +488,7 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
     <div class="slide-foot"><span class="course-label">APP UI 設計規範</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide android" data-screen-label="13 Android 的 dp 與 sp">
+  <section class="slide android" data-screen-label="19 Android 的 dp 與 sp">
     <div class="slide-head"><span class="unit-pill">Android Units</span><span class="slide-num"></span></div>
     <div class="slide-body">
       <p class="cover-eyebrow">Density-independent sizing</p>
@@ -395,7 +502,7 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
     <div class="slide-foot"><span class="course-label">APP UI 設計規範</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide android" data-screen-label="14 Android 密度與資源">
+  <section class="slide android" data-screen-label="20 Android 密度與資源">
     <div class="slide-head"><span class="unit-pill">Android Density</span><span class="slide-num"></span></div>
     <div class="slide-body">
       <p class="cover-eyebrow">Density buckets</p>
@@ -411,7 +518,7 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
     <div class="slide-foot"><span class="course-label">APP UI 設計規範</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide android" data-screen-label="15 Android 導覽依空間變化">
+  <section class="slide android" data-screen-label="21 Android 導覽依空間變化">
     <div class="slide-head"><span class="unit-pill">Android Navigation</span><span class="slide-num"></span></div>
     <div class="slide-body">
       <p class="cover-eyebrow">Adaptive navigation</p>
@@ -429,7 +536,7 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
     <div class="slide-foot"><span class="course-label">APP UI 設計規範</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide" data-screen-label="16 文字系統需要回應縮放">
+  <section class="slide" data-screen-label="22 文字系統需要回應縮放">
     <div class="slide-head"><span class="unit-pill">Typography</span><span class="slide-num"></span></div>
     <div class="slide-body">
       <p class="cover-eyebrow">Dynamic type and font scaling</p>
@@ -461,7 +568,7 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
     <div class="slide-foot"><span class="course-label">APP UI 設計規範</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide dark" data-screen-label="17 表單包含系統鍵盤情境">
+  <section class="slide dark" data-screen-label="23 表單包含系統鍵盤情境">
     <div class="slide-head"><span class="unit-pill">Forms</span><span class="slide-num"></span></div>
     <div class="slide-body">
       <p class="cover-eyebrow">Keyboard-aware layout</p>
@@ -476,7 +583,7 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
     <div class="slide-foot"><span class="course-label">APP UI 設計規範</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide" data-screen-label="18 手勢需要可發現的替代方式">
+  <section class="slide" data-screen-label="24 手勢需要可發現的替代方式">
     <div class="slide-head"><span class="unit-pill">Gestures</span><span class="slide-num"></span></div>
     <div class="slide-body">
       <p class="cover-eyebrow">Discoverability</p>
@@ -490,7 +597,7 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
     <div class="slide-foot"><span class="course-label">APP UI 設計規範</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide" data-screen-label="19 狀態回饋連接操作與結果">
+  <section class="slide" data-screen-label="25 狀態回饋連接操作與結果">
     <div class="slide-head"><span class="unit-pill">Feedback</span><span class="slide-num"></span></div>
     <div class="slide-body">
       <p class="cover-eyebrow">System status</p>
@@ -506,7 +613,7 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
     <div class="slide-foot"><span class="course-label">APP UI 設計規範</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide dark" data-screen-label="20 無障礙是版面規則">
+  <section class="slide dark" data-screen-label="26 無障礙是版面規則">
     <div class="slide-head"><span class="unit-pill">Accessibility</span><span class="slide-num"></span></div>
     <div class="slide-body">
       <p class="cover-eyebrow">Perceivable · operable · understandable · robust</p>
@@ -521,7 +628,7 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
     <div class="slide-foot"><span class="course-label">APP UI 設計規範</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide" data-screen-label="21 APP 介面檢核">
+  <section class="slide" data-screen-label="27 APP 介面檢核">
     <div class="slide-head"><span class="unit-pill">Self-check</span><span class="slide-num"></span></div>
     <div class="slide-body">
       <p class="cover-eyebrow">Interface checklist</p>
@@ -538,7 +645,7 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
     <div class="slide-foot"><span class="course-label">APP UI 設計規範</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide" data-screen-label="22 作業 9 APP 介面">
+  <section class="slide" data-screen-label="28 作業 9 APP 介面">
     <div class="slide-head"><span class="unit-pill">Assignment 09</span><span class="slide-num"></span></div>
     <div class="slide-body">
       <p class="cover-eyebrow">Figma deliverable</p>
@@ -556,7 +663,7 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
     <div class="slide-foot"><span class="course-label">APP UI 設計規範</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide dark" data-screen-label="23 資源與講義">
+  <section class="slide dark" data-screen-label="29 資源與講義">
     <div class="slide-head"><span class="unit-pill">Resources</span><span class="slide-num"></span></div>
     <div class="slide-body">
       <p class="cover-eyebrow">Official references</p>
@@ -571,36 +678,36 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
         <a href="https://www.w3.org/WAI/WCAG22/quickref/" target="_blank" rel="noopener"><strong>WCAG 2.2 Quick Reference</strong><span>對比、替代文字、鍵盤與操作標準。</span></a>
         <a href="https://mobbin.com" target="_blank" rel="noopener"><strong>Mobbin</strong><span>App UI 截圖庫，比對同款 App 在 iOS／Android 的介面差異。</span></a>
         <a href="https://www.figma.com/design/LU76FDo4H2sNFsOO8KQuJI" target="_blank" rel="noopener"><strong>Unit 09 示意板（Figma）</strong><span>Safe Area、觸控目標、Tab Bar、單位對應四張原始檔。</span></a>
-        <a href="guideline-vs-policy.html"><strong>設計指南是建議，上架規範是規定</strong><span>遵守程度分級、70/30 Design System、平台行為拆解、Figma 資料夾建議。</span></a>
-        <a href="article.html#s11"><strong>Unit 09 完整講義</strong><span>平台比較、尺寸單位、元件情境、雙平台對照總表與 APP 檢核表。</span></a>
+        <a href="guideline-vs-policy.html" target="_blank" rel="noopener"><strong>設計指南是建議，上架規範是規定</strong><span>遵守程度分級、70/30 Design System、平台行為拆解、Figma 資料夾建議。</span></a>
+        <a href="article.html" target="_blank" rel="noopener"><strong>Unit 09 完整講義</strong><span>Tokens、Figma Variables、元件庫，平台規範案例與雙平台對照總表。</span></a>
       </div>
       <p class="source-note">課程基礎資料：resources/App 設計.pdf、resources/sp-dp.md、resources/參考資料.md、README.md。完整參考連結見講義「參考資料」。</p>
     </div>
     <div class="slide-foot"><span class="course-label">APP UI 設計規範</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide" data-screen-label="24 從案例到你自己的規範">
+  <section class="slide" data-screen-label="30 從案例到你自己的規範">
     <div class="slide-head"><span class="unit-pill">AI Drafting</span><span class="slide-num"></span></div>
     <div class="slide-body">
       <p class="cover-eyebrow">Write your own spec</p>
-      <h2>前面 §1–11 的規則，是這樣寫成的</h2>
+      <h2>前面 APP 規範裡的規則，是這樣寫成的</h2>
       <div class="grid-3">
         <div class="panel"><h3>草稿</h3><p>把你腦中的規則口述給 AI，整理成規則＋原因＋一個符合／一個違反的範例。</p></div>
         <div class="panel"><h3>找漏洞</h3><p>讓 AI 扮演「找麻煩的工程師」，列出規則沒講清楚的邊界情況：長文案、小螢幕、錯誤或停用狀態。</p></div>
         <div class="panel"><h3>轉檢核表</h3><p>把確認過的規範，轉成像 <code>checklist.html</code> 一樣可勾選的交件檢核表。</p></div>
       </div>
-      <p class="cover-sub" style="margin-top:36px">完整三步驟提示詞見講義 §12「用 AI 撰寫你自己的規範文件」。</p>
+      <p class="cover-sub" style="margin-top:36px">完整三步驟提示詞見講義 §16「用 AI 撰寫你自己的規範文件」。</p>
     </div>
     <div class="slide-foot"><span class="course-label">Design System</span><div class="dots"></div></div>
   </section>
 
-  <section class="slide dark" data-screen-label="25 AI 幫不了的部分">
+  <section class="slide dark" data-screen-label="31 AI 幫不了的部分">
     <div class="slide-head"><span class="unit-pill">Human Judgment</span><span class="slide-num"></span></div>
     <div class="slide-body">
       <p class="cover-eyebrow">What AI can't do</p>
       <h2>數字要回頭核對，規則要不要收也是你決定</h2>
       <div class="metric-row">
-        <div class="metric"><b>數字</b><span>AI 常把 iOS／Android 的規格數字混著講，或用過時版本，一定要對照官方文件或 §11 總表。</span></div>
+        <div class="metric"><b>數字</b><span>AI 常把 iOS／Android 的規格數字混著講，或用過時版本，一定要對照官方文件或 §15 總表。</span></div>
         <div class="metric"><b>取捨</b><span>哪些例外要寫進規則、哪些可以先不管，是設計判斷，AI 只能幫你列出來，不能幫你決定。</span></div>
         <div class="metric"><b>驗證</b><span>規範文件寫完後要拿長文案、小螢幕、錯誤或停用狀態實際套用測試，才知道規則夠不夠用。</span></div>
       </div>
@@ -627,7 +734,7 @@ h3 { margin-bottom: 10px; font-size: 18px; line-height: 1.3; }
   const deck = document.getElementById('deck');
   const slides = Array.from(document.querySelectorAll('.slide'));
   const prog = document.getElementById('prog');
-  const storageKey = 'unit11-slide-index';
+  const storageKey = 'unit09-slide-index';
   let current = Math.min(Number(localStorage.getItem(storageKey)) || 0, slides.length - 1);
 
   function fitDeck() {

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unit 09 · APP UI 設計規範｜完整教材</title>
+<title>Unit 09 · Design System：Tokens、元件庫與規範文件｜完整教材</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
@@ -541,18 +541,22 @@ tr:last-child td { border-bottom: none; }
 <nav class="side-nav" aria-label="大綱導覽">
   <p class="side-nav-label">大綱</p>
   <ol>
-    <li><a href="#s1">APP 與 Web 的情境差異</a></li>
-    <li><a href="#s2">平台規範的共同目標</a></li>
-    <li><a href="#s3">pt、px、dp、sp</a></li>
-    <li><a href="#s4">畫布與適配</a></li>
-    <li><a href="#s5">Safe Area 與系統區域</a></li>
-    <li><a href="#s6">導覽與平台慣例</a></li>
-    <li><a href="#s7">觸控、手勢與回饋</a></li>
-    <li><a href="#s8">文字、表單與鍵盤</a></li>
-    <li><a href="#s9">無障礙與對比</a></li>
-    <li><a href="#s10">作業 9 與介面檢核</a></li>
-    <li><a href="#s11">iOS × Android 對照總表</a></li>
-    <li><a href="#s12">用 AI 撰寫你自己的規範文件</a></li>
+    <li><a href="#s1">Design System 的三層</a></li>
+    <li><a href="#s2">Design Tokens</a></li>
+    <li><a href="#s3">Figma Variables</a></li>
+    <li><a href="#s4">元件庫與 Variants</a></li>
+    <li><a href="#s5">APP 與 Web 的情境差異</a></li>
+    <li><a href="#s6">平台規範的共同目標</a></li>
+    <li><a href="#s7">pt、px、dp、sp</a></li>
+    <li><a href="#s8">畫布與適配</a></li>
+    <li><a href="#s9">Safe Area 與系統區域</a></li>
+    <li><a href="#s10">導覽與平台慣例</a></li>
+    <li><a href="#s11">觸控、手勢與回饋</a></li>
+    <li><a href="#s12">文字、表單與鍵盤</a></li>
+    <li><a href="#s13">無障礙與對比</a></li>
+    <li><a href="#s14">作業 9 與介面檢核</a></li>
+    <li><a href="#s15">iOS × Android 對照總表</a></li>
+    <li><a href="#s16">用 AI 撰寫你自己的規範文件</a></li>
   </ol>
 </nav>
 
@@ -563,34 +567,200 @@ tr:last-child td { border-bottom: none; }
 
 <div class="hero">
   <p class="overline">Design System</p>
-  <h1>Design System：<br>用 AI 撰寫設計規範文件</h1>
-  <p class="lead">一份好的設計規範文件，是把「怎麼做才對」寫成別人不用問你就能照著做的規則。這份講義用本班自己的「APP UI 設計規範」當範例——先拆解它怎麼把 iOS／Android 的平台差異寫成可依循的規則，再看怎麼用 AI 幫你把自己的規範文件寫出來、寫完整。</p>
-  <div class="meta"><span>案例：本單元 APP UI 設計規範</span><span class="d"></span><span>iOS Human Interface Guidelines</span><span class="d"></span><span>Material Design</span></div>
+  <h1>Design System：<br>Tokens、元件庫與規範文件</h1>
+  <p class="lead">上週做的按鈕、卡片、表單，頁面一多就開始走樣：同一個藍色有三種色碼、圓角有 8 也有 10。Design System 把這些數值和元件決定一次、存起來給整組人共用。這份講義由下往上講：先是 Design Tokens 與 Figma Variables，再來是元件庫，接著用本班「APP UI 設計規範」當規範文件的範例，最後用 AI 把你自己專題的規範寫出來。</p>
+  <div class="meta"><span>Figma Variables</span><span class="d"></span><span>W3C Design Tokens</span><span class="d"></span><span>案例：本單元 APP UI 設計規範</span></div>
 </div>
 
 <div class="toc">
   <h2>目錄</h2>
   <ol>
-    <li><a href="#s1">APP 與 Web 的情境差異</a></li>
-    <li><a href="#s2">平台規範的共同目標</a></li>
-    <li><a href="#s3">pt、px、dp、sp</a></li>
-    <li><a href="#s4">畫布與適配</a></li>
-    <li><a href="#s5">Safe Area 與系統區域</a></li>
-    <li><a href="#s6">導覽與平台慣例</a></li>
-    <li><a href="#s7">觸控、手勢與回饋</a></li>
-    <li><a href="#s8">文字、表單與鍵盤</a></li>
-    <li><a href="#s9">無障礙與對比</a></li>
-    <li><a href="#s10">作業 9 與介面檢核</a></li>
-    <li><a href="#s11">iOS × Android 對照總表</a></li>
-    <li><a href="#s12">用 AI 撰寫你自己的規範文件</a></li>
+    <li><a href="#s1">Design System 的三層</a></li>
+    <li><a href="#s2">Design Tokens</a></li>
+    <li><a href="#s3">Figma Variables</a></li>
+    <li><a href="#s4">元件庫與 Variants</a></li>
+    <li><a href="#s5">APP 與 Web 的情境差異</a></li>
+    <li><a href="#s6">平台規範的共同目標</a></li>
+    <li><a href="#s7">pt、px、dp、sp</a></li>
+    <li><a href="#s8">畫布與適配</a></li>
+    <li><a href="#s9">Safe Area 與系統區域</a></li>
+    <li><a href="#s10">導覽與平台慣例</a></li>
+    <li><a href="#s11">觸控、手勢與回饋</a></li>
+    <li><a href="#s12">文字、表單與鍵盤</a></li>
+    <li><a href="#s13">無障礙與對比</a></li>
+    <li><a href="#s14">作業 9 與介面檢核</a></li>
+    <li><a href="#s15">iOS × Android 對照總表</a></li>
+    <li><a href="#s16">用 AI 撰寫你自己的規範文件</a></li>
   </ol>
 </div>
 
 <div class="article">
   <section class="section" id="s1">
-    <p class="sec-num">Worked Example · 01</p>
+    <p class="sec-num">Design System · 01</p>
+    <h2 class="sec-title">Design System 由 Tokens、元件庫與規範文件三層組成</h2>
+    <p>上週 Unit 08 做的按鈕、卡片、表單，放在一兩個頁面裡看起來都沒問題。專題做到第二十個頁面，通常就開始走樣：同一個品牌藍在 Figma 裡出現 <code>#0066CC</code>、<code>#0067CD</code>、<code>#1A73E8</code> 三種，按鈕圓角有 8 也有 10，卡片內距有 16 也有 20。沒有人故意這樣做，只是每次都從頭挑一次。</p>
+    <p>Design System 處理的就是這件事：把「每次都要重新決定的東西」決定一次、存起來，讓整組設計師和工程師共用同一份。它通常拆成三層，由下往上蓋：</p>
+    <div class="cards">
+      <div class="card"><h3>Tokens（數值層）</h3><p>顏色、字級、間距、圓角這些數字，各自取一個名字。Figma 裡用 Variables 存。§2、§3 講這一層。</p></div>
+      <div class="card"><h3>Components（元件層）</h3><p>用 tokens 組出來的按鈕、輸入框、卡片。改主元件，同一個檔案裡的實例會跟著更新；其他檔案要等 Library 重新發布。Figma 裡用 Components 和 Variants 做。§4 講這一層。</p></div>
+      <div class="card"><h3>Guidelines（規範層）</h3><p>什麼情況用哪個元件、為什麼、例外怎麼處理。這一層是文件，不是 Figma 物件。§5–§15 的 APP UI 設計規範就是一份範例。</p></div>
+      <div class="card"><h3>你這堂課要帶走的</h3><p>一組自己專題的 Variables、至少一個用到它們的元件，以及一份寫給組員看的規範文件（§16 用 AI 協助）。</p></div>
+    </div>
+    <p>三層缺一層會發生的事情不一樣。少了 token 層，元件裡的數字是寫死的，品牌色一改就要一個一個元件去找；少了元件層，每個頁面都在重畫按鈕；少了規範層，元件庫做得再完整，新加入的組員還是會把「次要按鈕」拿去當主要動作用。</p>
+    <h3>對應到 Figma 檔案的資料夾</h3>
+    <p><a href="guideline-vs-policy.html#s5">〈設計指南是建議，上架規範是規定〉第 5 節</a>的 Figma 資料夾建議，就是照這三層排的：</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>資料夾</th><th>放什麼</th><th>對應哪一層</th></tr></thead>
+        <tbody>
+          <tr><td>Foundation</td><td>Color、Typography、Spacing、Icon</td><td>Tokens</td></tr>
+          <tr><td>Components</td><td>Button、Card、Form、Modal</td><td>元件庫</td></tr>
+          <tr><td>Patterns</td><td>常見的元件組合用法與版面模式</td><td>元件庫＋規範</td></tr>
+          <tr><td>Platform → iOS／Android</td><td>Navigation、Modal／Bottom Sheet、Picker、Back Behavior、Permission</td><td>規範（平台差異）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout"><span class="label">一句話版本</span><p><strong>Tokens 決定「用哪些數字」，元件決定「這些數字組成什麼」，規範決定「什麼時候用、怎麼用」。</strong>業界常說的「70% 平台習慣＋30% 品牌」，品牌那 30% 大多落在 tokens 和元件外觀，平台習慣那 70% 大多寫在規範裡。</p></div>
+  </section>
+
+  <section class="section" id="s2">
+    <p class="sec-num">Design Tokens · 02</p>
+    <h2 class="sec-title">Design Token 是有名字的設計數值</h2>
+    <p>W3C 的 Design Tokens 社群小組對 token 的定義很短：一筆跟「人看得懂的名字」綁在一起的資訊，最少就是一組名稱和值。<code>#0066CC</code> 是值；<code>color.action.primary</code> 是名字。名字的價值在於它講出「這個顏色拿來做什麼」——工程師看到名字就知道對應程式碼裡哪個變數，品牌色要換的時候也只改一個地方。</p>
+    <h3>兩層命名：原始值與語意值</h3>
+    <p>實務上 tokens 常分兩層。第一層是原始值（primitive），單純把色盤、間距級距列出來；第二層是語意值（semantic），描述用途，值不直接寫數字，而是指向第一層。W3C 規格把這種「一個 token 的值指向另一個 token」稱為 alias（別名）：同一個值可以有好幾個名字。</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>層級</th><th>名稱範例</th><th>值</th><th>誰會直接用它</th></tr></thead>
+        <tbody>
+          <tr><td>原始值</td><td><code>blue.600</code></td><td><code>#0066CC</code></td><td>只給語意 token 引用，元件不直接用</td></tr>
+          <tr><td>原始值</td><td><code>space.4</code></td><td><code>16</code></td><td>同上</td></tr>
+          <tr><td>語意值</td><td><code>color.action.primary</code></td><td>→ <code>blue.600</code></td><td>主要按鈕的底色</td></tr>
+          <tr><td>語意值</td><td><code>space.inset.card</code></td><td>→ <code>space.4</code></td><td>卡片內距</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>多一層看起來麻煩，好處在改版和深色模式的時候出現：品牌藍要調深一點，只改 <code>blue.600</code>；深色模式要讓主要按鈕換成比較亮的藍，只改 <code>color.action.primary</code> 在深色模式下指向誰。元件本身一行都不用動。</p>
+    <h3>語意名稱描述用途，不描述外觀</h3>
+    <p>✕ <code>color.red</code> ✓ <code>color.text.danger</code>。前者在深色模式或改版時，值可能變成橘色或粉紅色，名字就跟實際顏色對不上；後者不管值怎麼換，大家都知道它是「錯誤訊息的文字色」。同樣道理，✕ <code>space.16</code> ✓ <code>space.inset.card</code>——數字會變，用途不會。</p>
+    <h3>一個專題通常需要的 tokens</h3>
+    <ul class="bullets">
+      <li><strong>顏色</strong>：品牌主色、文字（主要／次要／錯誤）、背景與表面、邊框、狀態色（成功／警告／錯誤）。</li>
+      <li><strong>字體</strong>：字級、行高、字重。可以直接對應 §12 的 iOS／Android 字級表。</li>
+      <li><strong>間距</strong>：一組固定級距（例如 4、8、12、16、24、32），對應 §15 提到的 8dp 網格。</li>
+      <li><strong>圓角與陰影</strong>：小、中、大三級通常就夠。</li>
+    </ul>
+    <div class="callout"><span class="label">跟工程師交接</span><p>W3C Design Tokens 社群小組在 2025 年 10 月發布了第一個穩定版的 token 檔案格式（Design Tokens Format Module 2025.10），用 JSON 描述每個 token 的 <code>$value</code>（值）與 <code>$type</code>（類型）。你不用自己寫 JSON，但知道「tokens 可以匯出成工程端工具讀得懂的檔案」，命名時就會比較認真——轉換工具會依 token 的名稱與分組路徑產生程式碼裡的變數名，實際長相看工程端工具的設定。</p></div>
+  </section>
+
+  <section class="section" id="s3">
+    <p class="sec-num">Figma Variables · 03</p>
+    <h2 class="sec-title">Figma Variables 把 tokens 存進設計檔</h2>
+    <p>Figma 官方說明把 Variables 定義成「可重複使用的值，能套用到各種設計屬性與原型互動」。換句話說，§2 講的 tokens，在 Figma 裡就是用 Variables 存。</p>
+    <h3>六種變數類型</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>類型</th><th>存什麼</th><th>常套用在</th></tr></thead>
+        <tbody>
+          <tr><td>Color</td><td>實心色（可帶透明度）</td><td>填色、外框、漸層色標、陰影</td></tr>
+          <tr><td>Number</td><td>數字</td><td>圓角、寬高、字級、行高、padding 與 gap、外框粗細、透明度</td></tr>
+          <tr><td>String</td><td>文字字串</td><td>文字內容、多語系文案</td></tr>
+          <tr><td>Boolean</td><td>true／false</td><td>圖層顯示／隱藏、原型裡的條件判斷</td></tr>
+          <tr><td>Timing</td><td>毫秒為單位的時間長度</td><td>Figma Motion 動態</td></tr>
+          <tr><td>Easing</td><td>緩動曲線或彈簧動畫</td><td>Figma Motion 動態</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>這堂課用得到的主要是 Color 和 Number：顏色 tokens 用 Color，字級、間距、圓角用 Number。</p>
+    <h3>Collection 與 Mode：一個變數，多組情境的值</h3>
+    <p><strong>Collection</strong> 是一組變數加上它們的模式；<strong>Mode</strong> 是 collection 裡的一欄值，每個變數在這一欄只存一個值。Figma 官方的例子正好是深淺色：建一個 collection，給它兩個 mode，淺色當預設、另一個存深色的值。之後把 frame 切到 Dark mode，所有綁了這些變數的圖層會一起換色，不用另外畫一套深色畫面。</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>變數（Semantic collection）</th><th>Light</th><th>Dark</th></tr></thead>
+        <tbody>
+          <tr><td><code>color/surface/default</code></td><td><code>#FBFBFD</code></td><td><code>#1D1D1F</code></td></tr>
+          <tr><td><code>color/text/primary</code></td><td><code>#1D1D1F</code></td><td><code>#F5F5F7</code></td></tr>
+          <tr><td><code>color/action/primary</code></td><td>→ <code>blue/600</code>（#0066CC）</td><td>→ <code>blue/400</code>（#58A6FF）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>表裡的色碼是本課程網站自己的配色，拿來當示範；你的專題換成自己的品牌色。Figma 的變數名稱用斜線 <code>/</code> 分組，在面板裡會自動變成資料夾。</p>
+    <h3>Aliasing：讓語意變數指向原始變數</h3>
+    <p>Figma 允許一個變數的值是另一個變數，官方稱為 aliasing，對應的就是 §2 的兩層命名。建議的建法：</p>
+    <ol class="steps">
+      <li><strong>Primitives collection</strong>：只有一個 mode，放色盤與間距級距，例如 <code>blue/600</code>、<code>space/4</code>。</li>
+      <li><strong>Semantic collection</strong>：開 Light 與 Dark 兩個 mode，每個變數的值都用 alias 指到 Primitives，不直接填色碼。</li>
+      <li><strong>套到元件</strong>：按鈕的填色綁 <code>color/action/primary</code>、內距綁 <code>space/inset/button</code>、圓角綁 <code>radius/md</code>。元件只認語意變數。</li>
+      <li><strong>切 mode 檢查</strong>：把放元件的 frame 切到 Dark，看有沒有哪個圖層沒跟著換。沒換的圖層，依序檢查三件事：有沒有綁變數（多半是寫死了色碼）、那個變數在兩個 mode 的值是不是剛好一樣、子圖層是不是自己另外指定了 mode。</li>
+    </ol>
+    <h3>Variables 和 Styles 不是二選一</h3>
+    <p>Figma 官方的說法是：Styles 存的是「一組值」，套用時一次全部生效；Variables 存的是「單一的值」，一次只呈現一個。Styles 不支援 alias，也沒有 mode。官方也明講 Variables 不是用來取代 Styles 的。</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>需求</th><th>用 Variables</th><th>用 Styles</th></tr></thead>
+        <tbody>
+          <tr><td>單一顏色</td><td>✓ 可以 alias、可以切深淺色</td><td>Color Style 可以，但沒有 mode</td></tr>
+          <tr><td>間距、圓角、內距</td><td>✓ Number 變數</td><td>—（Styles 存不了這些）</td></tr>
+          <tr><td>漸層這種「多個值組成一個屬性」</td><td>—</td><td>✓</td></tr>
+          <tr><td>整組文字樣式（字體＋字級＋行高＋字重）</td><td>字級、行高可以各自是 Number 變數</td><td>✓ 用 Text Style 包起來，裡面引用變數</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout warn"><p><strong>方案限制：</strong>能開幾個 mode 跟 Figma 方案有關。依官方方案比較表，Starter（免費）方案沒有列出多 mode 功能，Professional 每個 collection 最多 10 個 mode，Organization 最多 20 個，Enterprise 不限；每個 collection 最多 5,000 個變數。把 Variables 發布成團隊 Library，需要 Professional、Education、Organization、Government 或 Enterprise 方案。學生如果有申請 Figma 教育方案，以自己帳號實際能建的數量為準；不能開第二個 mode 的話，深色模式的值先寫在規範文件裡，作業不會因此扣分。</p></div>
+  </section>
+
+  <section class="section" id="s4">
+    <p class="sec-num">Components · 04</p>
+    <h2 class="sec-title">元件庫：用 tokens 組出可重複使用的元件</h2>
+    <p>元件庫是 Design System 裡大家最常看到的部分。Figma 的元件有兩個角色：<strong>主元件（main component）</strong>定義元件的屬性；<strong>實例（instance）</strong>是拿去頁面上用的複本，跟主元件連動，主元件改了，實例會收到更新。</p>
+    <h3>Variants：把同一個元件的不同狀態收在一起</h3>
+    <p>Variants 把相似的元件收進同一個容器，Figma 叫它 component set。每個 variant property 是一個「會變的面向」，例如 <code>State</code>、<code>Size</code>；每個值是這個面向的選項。一顆主要按鈕可以這樣拆：</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Variant property</th><th>值</th><th>對應講義哪裡</th></tr></thead>
+        <tbody>
+          <tr><td>State</td><td>Default、Pressed、Loading、Disabled</td><td>§11 按下之後的狀態與結果分支</td></tr>
+          <tr><td>Size</td><td>S、M、L</td><td>§15 Android 按鈕高度 40／48／56dp</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>§14 作業 9 的交件表裡「元件狀態：Component／Variants」，指的就是這個。</p>
+    <h3>Component properties：不用每種組合都拆成 variant</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>屬性類型</th><th>用途</th><th>按鈕的例子</th></tr></thead>
+        <tbody>
+          <tr><td>Variant</td><td>元件的不同樣子：狀態、尺寸、顏色</td><td>State、Size</td></tr>
+          <tr><td>Boolean</td><td>某個圖層要不要顯示（目前只支援顯示／隱藏）</td><td>左側圖示開或關</td></tr>
+          <tr><td>Instance swap</td><td>可以換成哪些其他元件</td><td>把圖示換成另一個 icon 元件</td></tr>
+          <tr><td>Text</td><td>哪段文字可以改</td><td>按鈕文案</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout warn"><p><strong>Variants 會乘出來：</strong>State 4 種 × Size 3 種 × 有沒有圖示 2 種 = 24 個 variant，再加一個「有沒有右側箭頭」就變 48 個。圖示開關這種「只是顯示或隱藏」的差異，用 Boolean property 處理就好，variant 只留給樣子真的不一樣的面向。</p></div>
+    <h3>元件裡面只用 tokens，不寫死數字</h3>
+    <p>一顆按鈕綁定的東西，大概是這樣：</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>按鈕的部位</th><th>綁定的變數</th></tr></thead>
+        <tbody>
+          <tr><td>底色</td><td><code>color/action/primary</code></td></tr>
+          <tr><td>文字色</td><td><code>color/text/on-action</code></td></tr>
+          <tr><td>左右內距</td><td><code>space/inset/button</code></td></tr>
+          <tr><td>圓角</td><td><code>radius/md</code></td></tr>
+          <tr><td>最小高度</td><td>iOS 44pt／Android 48dp（§11 觸控目標）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>發布成 Library，其他檔案才拿得到</h3>
+    <p>Figma 的 Library 是一組設計資產：components、styles、variables。要在別的檔案用，得先把它們發布（publish）成 library。改了主元件之後，變更只會先套用到目前這個檔案裡的實例，要再發布一次，其他檔案才會收到更新通知。分組專題可以指定一個人管 library 檔，其他人只用不改。</p>
+    <div class="callout"><span class="label">接下來</span><p>Tokens 和元件做好之後，還缺一層：告訴大家什麼時候用哪個、例外怎麼處理。§5–§15 是本班的「APP UI 設計規範」，拿它當規範層的完整範例。</p></div>
+  </section>
+
+  <section class="section" id="s5">
+    <p class="sec-num">Worked Example · 05</p>
     <h2 class="sec-title">APP 與 Web 的差異不只在畫面大小</h2>
-    <p>接下來 §1–§11 是本班「APP UI 設計規範」這份文件本身——它就是一份完整的設計規範文件範例：把平台差異拆成規則、把規則配上數字與圖，交件時任何人拿去照做都不用再問你。讀的時候，除了記內容，也留意它「怎麼被寫成一份規範」——這個寫法會在 §12 用 AI 重現一次。</p>
+    <p>從這節到 §15 是本班「APP UI 設計規範」這份文件本身——它就是一份完整的設計規範文件範例：把平台差異拆成規則、把規則配上數字與圖，交件時任何人拿去照做都不用再問你。讀的時候，除了記內容，也留意它「怎麼被寫成一份規範」——這個寫法會在 §16 用 AI 重現一次。</p>
     <p>把桌面網站縮進手機畫布，只處理了寬度，沒有處理行動裝置的操作情境。APP 介面同時受手指操作、作業系統、裝置硬體與平台慣例影響。</p>
     <div class="cards">
       <div class="card"><h3>輸入方式</h3><p>觸控沒有 hover，也沒有精準游標。可點擊範圍、元素間距與按壓回饋會直接影響操作成功率。</p></div>
@@ -601,8 +771,8 @@ tr:last-child td { border-bottom: none; }
     <div class="callout"><span class="label">核心判斷</span><p><strong>原生感來自符合預期的行為。</strong>元件外觀可以品牌化，但返回、導覽、鍵盤、權限與系統狀態仍需要遵循平台習慣。</p></div>
   </section>
 
-  <section class="section" id="s2">
-    <p class="sec-num">Platforms · 02</p>
+  <section class="section" id="s6">
+    <p class="sec-num">Platforms · 06</p>
     <h2 class="sec-title">兩個平台，共同解決清楚、可用與一致</h2>
     <p>Apple Human Interface Guidelines 與 Material Design 都在處理資訊層級、可操作性、適配與無障礙；差異主要出現在元件語言、導覽方式與系統整合。</p>
     <div class="cards">
@@ -627,8 +797,8 @@ tr:last-child td { border-bottom: none; }
     <div class="callout"><p><strong>完整版：</strong>遵守程度分級表、三層 Design System 拆解、iOS／Android 平台行為要拆到多細、Figma Design System 資料夾建議，見<a href="guideline-vs-policy.html">〈設計指南是建議，上架規範是規定〉</a>。</p></div>
   </section>
 
-  <section class="section" id="s3">
-    <p class="sec-num">Units · 03</p>
+  <section class="section" id="s7">
+    <p class="sec-num">Units · 07</p>
     <h2 class="sec-title">邏輯單位控制視覺大小，像素控制顯示細節</h2>
     <p>同一個 44 px 元素在低密度與高密度螢幕上的實際大小不同。平台因此使用邏輯單位描述介面尺寸，再由系統依裝置密度轉換成物理像素。</p>
     <div class="unit-figure" aria-label="邏輯單位到物理像素示意">
@@ -682,8 +852,8 @@ tr:last-child td { border-bottom: none; }
     </figure>
   </section>
 
-  <section class="section" id="s4">
-    <p class="sec-num">Canvas · 04</p>
+  <section class="section" id="s8">
+    <p class="sec-num">Canvas · 08</p>
     <h2 class="sec-title">畫布尺寸是測試起點，適配規則才是設計成果</h2>
     <p>裝置型號與尺寸會持續更新。下表協助理解倍率與畫布差異，但專題不需要為每一款手機建立獨立畫面。主要畫布搭配尺寸驗證，更能呈現真正的版面規則。</p>
     <div class="tbl-wrap">
@@ -711,8 +881,8 @@ tr:last-child td { border-bottom: none; }
     <div class="callout"><span class="label">Figma 對應</span><p>Auto Layout 管理內容成長，Constraints 與 Resizing 管理容器變化，Layout Grid 管理一致邊距。畫面適配來自這些關係，不來自逐台裝置手動微調。</p></div>
   </section>
 
-  <section class="section" id="s5">
-    <p class="sec-num">Safe Area · 05</p>
+  <section class="section" id="s9">
+    <p class="sec-num">Safe Area · 09</p>
     <h2 class="sec-title">Safe Area 不是固定數字，而是系統提供的可用區域</h2>
     <p>Safe Area 避免重要內容被相機區、Dynamic Island、圓角、Home Indicator、系統列或其他介面遮擋。不同裝置、方向與系統狀態會改變 inset，因此固定背誦單一頂部或底部高度並不可靠。</p>
     <figure class="fig">
@@ -743,8 +913,8 @@ tr:last-child td { border-bottom: none; }
     <div class="callout"><p><strong>這組數字的用法：</strong>它是畫輔助線的起始值，不是要背下來的固定答案。實際專案仍以 Figma 裝置框架自動產生的 Safe Area 為準——換機型、轉橫向或系統狀態改變時，實際 inset 會跟著變。</p></div>
   </section>
 
-  <section class="section" id="s6">
-    <p class="sec-num">Navigation · 06</p>
+  <section class="section" id="s10">
+    <p class="sec-num">Navigation · 10</p>
     <h2 class="sec-title">導覽元件把資訊架構轉成可移動的路徑</h2>
     <p>主要目的地、內容層級與暫時任務需要不同容器。Tab Bar 或 Navigation Bar 適合主要目的地；Navigation Stack 適合由列表進入詳情；Sheet 或 Dialog 適合短暫而聚焦的任務。</p>
     <div class="tbl-wrap">
@@ -773,8 +943,8 @@ tr:last-child td { border-bottom: none; }
     </figure>
   </section>
 
-  <section class="section" id="s7">
-    <p class="sec-num">Touch and Feedback · 07</p>
+  <section class="section" id="s11">
+    <p class="sec-num">Touch and Feedback · 11</p>
     <h2 class="sec-title">觸控範圍、手勢替代與狀態回饋共同決定可操作性</h2>
     <div class="target-row">
       <div><div class="target"><i>i</i></div><strong>iOS：44 × 44 pt 建議控制尺寸</strong></div>
@@ -796,8 +966,8 @@ tr:last-child td { border-bottom: none; }
     </ol>
   </section>
 
-  <section class="section" id="s8">
-    <p class="sec-num">Type and Forms · 08</p>
+  <section class="section" id="s12">
+    <p class="sec-num">Type and Forms · 12</p>
     <h2 class="sec-title">文字與表單需要容納系統設定和鍵盤</h2>
     <h3>語意文字樣式比固定字級更完整</h3>
     <p>標題、內文、說明與標籤透過語意樣式建立層級。iOS 的 <button type="button" class="term-btn" data-modal="dynamic-type">Dynamic Type</button> 與 Android 的 sp 會回應字體大小設定，因此元件高度、換行和間距也需要一起成長。</p>
@@ -859,8 +1029,8 @@ tr:last-child td { border-bottom: none; }
     <p>鍵盤展開後，畫面高度大幅減少。表單捲動、焦點欄位上移、主要操作位置、鍵盤收合與返回行為都屬於 APP Mockup 的真實狀態。</p>
   </section>
 
-  <section class="section" id="s9">
-    <p class="sec-num">Accessibility · 09</p>
+  <section class="section" id="s13">
+    <p class="sec-num">Accessibility · 13</p>
     <h2 class="sec-title">無障礙標準會改變版面與元件規格</h2>
     <p>POUR 四項原則可作為 APP 介面的完整視角：可感知（Perceivable）、可操作（Operable）、可理解（Understandable）與穩健（Robust）。</p>
     <div class="tbl-wrap">
@@ -879,8 +1049,8 @@ tr:last-child td { border-bottom: none; }
     <p>WCAG 2.2 提供現行且廣泛採用的對比檢核門檻。APCA 以視覺感知為基礎，曾作為 WCAG 3 的研究方向之一；規格仍可能變動，適合作為延伸觀察，不適合取代目前交付所使用的 WCAG 2.2 基準。</p>
   </section>
 
-  <section class="section" id="s10">
-    <p class="sec-num">Deliverable · 10</p>
+  <section class="section" id="s14">
+    <p class="sec-num">Deliverable · 14</p>
     <h2 class="sec-title">作業 9：Figma APP 介面頁面</h2>
     <p>本單元產出是一個具有平台規範意識的高保真 APP 主要頁面。完成度不只看單一畫面的美觀，也看系統區域、元件狀態與適配規則是否能被辨識。</p>
     <div class="tbl-wrap">
@@ -908,8 +1078,8 @@ tr:last-child td { border-bottom: none; }
     </div>
 </section>
 
-  <section class="section" id="s11">
-    <p class="sec-num">Comparison · 11</p>
+  <section class="section" id="s15">
+    <p class="sec-num">Comparison · 15</p>
     <h2 class="sec-title">iOS 與 Android 規範對照總表</h2>
     <p>前面各節分別講了單位、字體、觸控與導覽的判斷邏輯；這裡把兩個平台的官方數字並排整理，作為交件前快速核對用。</p>
     <h3>基本單位與螢幕規格</h3>
@@ -974,10 +1144,10 @@ tr:last-child td { border-bottom: none; }
     <div class="callout"><p><strong>這張總表的用法：</strong>拿來對照兩個平台「同一件事的官方預設值」，不是要在單一專案裡混用兩套數字。專題選定 iOS 或 Android 其中一個平台後，仍以該平台前面各節的判斷邏輯為準。</p></div>
   </section>
 
-  <section class="section" id="s12">
-    <p class="sec-num">AI Drafting · 12</p>
+  <section class="section" id="s16">
+    <p class="sec-num">AI Drafting · 16</p>
     <h2 class="sec-title">用 AI 撰寫你自己的規範文件</h2>
-    <p>前面 11 節是「規範文件寫出來會長什麼樣子」——有判斷邏輯、有數字、有可勾選的檢核表。輪到你的專題要寫自己的規範文件時，AI 可以幫忙把「你腦中知道但沒寫下來的規則」整理成一份別人不用問你就能照著做的文件，但判斷內容對不對、數字準不準，仍然要靠你自己核對來源。</p>
+    <p>前面 §5–§15 是「規範文件寫出來會長什麼樣子」——有判斷邏輯、有數字、有可勾選的檢核表。輪到你的專題要寫自己的規範文件時，AI 可以幫忙把「你腦中知道但沒寫下來的規則」整理成一份別人不用問你就能照著做的文件，但判斷內容對不對、數字準不準，仍然要靠你自己核對來源。</p>
     <h3>三步驟：草稿 → 找漏洞 → 轉成檢核表</h3>
     <div class="callout"><span class="label">第一步：把規則從腦中挖出來</span><p>AI 不知道你的產品規則，先由你口述或條列，AI 幫你整理成規範文件的骨架（規則＋原因＋例外）。</p></div>
     <div class="prompt">
@@ -1000,7 +1170,7 @@ tr:last-child td { border-bottom: none; }
 （例如：文字超長、同時要放兩個主要動作、深色模式、螢幕很窄的裝置）。
 每個情況請直接問我：這種狀況該怎麼處理？不要幫我自己決定答案。</pre>
     </div>
-    <div class="callout"><span class="label">第三步：轉成可勾選的檢核表</span><p>規範文件寫給人讀，檢核表給人在交件前跑一遍。本單元的 <a href="checklist.html">APP 介面檢核表</a> 就是這樣從 §1–§11 的規範轉出來的——同一份規範，兩種用法。</p></div>
+    <div class="callout"><span class="label">第三步：轉成可勾選的檢核表</span><p>規範文件寫給人讀，檢核表給人在交件前跑一遍。本單元的 <a href="checklist.html">APP 介面檢核表</a> 就是這樣從 §5–§15 的規範轉出來的——同一份規範，兩種用法。</p></div>
     <div class="prompt">
       <button class="copy-btn" type="button">複製</button>
       <pre>請把上面確認過的規範文件，轉換成一份交件前可以勾選的檢核表。
@@ -1010,7 +1180,7 @@ tr:last-child td { border-bottom: none; }
 分類方式請參考本單元 8 大類（平台、單位、安全區域、導覽、觸控、狀態、文字、無障礙），
 不適用的類別可以刪除，也可以依你的元件性質自訂新類別。</pre>
     </div>
-    <div class="callout warn"><p><strong>AI 不能幫你做的事：</strong>AI 產出的數字（尺寸、對比度、間距）一定要回頭核對官方文件或本單元 §11 的對照表，不能直接採用——AI 常把 iOS 和 Android 的數字混著講，或引用已經過時的版本。規則要不要收進文件、例外要怎麼處理，也是設計判斷，AI 只能列出選項，不能代你決定。</p></div>
+    <div class="callout warn"><p><strong>AI 不能幫你做的事：</strong>AI 產出的數字（尺寸、對比度、間距）一定要回頭核對官方文件或本單元 §15 的對照表，不能直接採用——AI 常把 iOS 和 Android 的數字混著講，或引用已經過時的版本。規則要不要收進文件、例外要怎麼處理，也是設計判斷，AI 只能列出選項，不能代你決定。</p></div>
   </section>
 </div><!-- /.article -->
 
@@ -1018,6 +1188,12 @@ tr:last-child td { border-bottom: none; }
       <h2>參考資料</h2>
   <h3>來源與延伸</h3>
       <ul>
+        <li><a href="https://help.figma.com/hc/en-us/articles/15339657135383-Guide-to-variables-in-Figma" target="_blank" rel="noopener">Figma · Guide to variables</a>／<a href="https://help.figma.com/hc/en-us/articles/14506821864087" target="_blank" rel="noopener">Overview of variables, collections, and modes</a>：Variables 的定義、六種類型、collection、mode 與 aliasing（對應第 3 節）。</li>
+        <li><a href="https://help.figma.com/hc/en-us/articles/15343816063383-Modes-for-variables" target="_blank" rel="noopener">Figma · Modes for variables</a>：深淺色 mode 的範例；各方案 mode 數量見 <a href="https://help.figma.com/hc/en-us/articles/360040328273" target="_blank" rel="noopener">方案比較</a>（對應第 3 節）。</li>
+        <li><a href="https://help.figma.com/hc/en-us/articles/15871097384471" target="_blank" rel="noopener">Figma · Styles vs. variables</a>：兩者的差異與「Variables 不取代 Styles」（對應第 3 節）。</li>
+        <li><a href="https://help.figma.com/hc/en-us/articles/360038662654" target="_blank" rel="noopener">Figma · Guide to components</a>、<a href="https://help.figma.com/hc/en-us/articles/360056440594" target="_blank" rel="noopener">Create and use variants</a>、<a href="https://help.figma.com/hc/en-us/articles/5579474826519" target="_blank" rel="noopener">Explore component properties</a>、<a href="https://help.figma.com/hc/en-us/articles/360041051154" target="_blank" rel="noopener">Guide to libraries</a>：主元件與實例、variants、component properties、library 發布（對應第 4 節）。</li>
+        <li><a href="https://www.designtokens.org/" target="_blank" rel="noopener">Design Tokens Community Group</a>／<a href="https://www.designtokens.org/TR/2025.10/format/" target="_blank" rel="noopener">Design Tokens Format Module 2025.10</a>：token 與 alias 的定義、第一個穩定版格式（對應第 2 節）。</li>
+        <li>第 1–4 節的 Figma／W3C 定義與數字取自上列官方文件（2026-11-17 查閱）。第 1 節的資料夾分層取自本單元 <a href="guideline-vs-policy.html#s5">guideline-vs-policy.html 第 5 節</a>；第 2–4 節的 token 命名範例、色碼示範（沿用本課程網站配色）與按鈕綁定表是本單元的教學示範，不是官方規定的命名。</li>
         <li><a href="https://developer.apple.com/design/human-interface-guidelines/" target="_blank" rel="noopener">Apple Human Interface Guidelines</a>：Layout、Accessibility、Navigation、Typography（英文版）。</li>
         <li><a href="https://developer.apple.com/cn/design/human-interface-guidelines" target="_blank" rel="noopener">人机界面指南</a>：HIG 中文版。</li>
         <li><a href="https://developer.apple.com/design/human-interface-guidelines/layout" target="_blank" rel="noopener">HIG · Layout</a>／<a href="https://developer.apple.com/design/human-interface-guidelines/buttons" target="_blank" rel="noopener">HIG · Buttons</a>：安全區域、邊距與按鈕層級的官方章節。</li>
@@ -1036,9 +1212,9 @@ tr:last-child td { border-bottom: none; }
         <li><a href="https://www.getstark.co/for-designers/" target="_blank" rel="noopener">Stark</a>：對比度與無障礙檢查的 Figma 外掛與工具組。</li>
         <li>Stark 與 Material Theme Builder 兩個外掛在本單元作業裡怎麼安裝、怎麼用，見 <a href="tools-stark-material.html">操作指南</a>。</li>
         <li><a href="https://mobbin.com" target="_blank" rel="noopener">Mobbin</a>：App UI 截圖庫，可比對同款 App 在 iOS／Android 上的介面差異。</li>
-        <li>本單元基礎資料：<code>resources/App 設計.pdf</code>（iPhone 機型尺寸表，對應第 4 節；安全區邊距數字，對應第 5 節）、<code>resources/sp-dp.md</code>（dp／sp 的定義與使用場景，對應第 3 節）、<code>resources/常見標籤類型.md</code>（iOS 標籤類型、SF 字級表、行高與邊距，對應第 8 節）、<code>resources/參考資料.md</code> 與 <code>resources/參考資料html/</code>（官方連結、Android 字級表、圖示輸出換算、Tab Bar 規格與雙平台對照，對應第 3、6、8、11 節與本清單）、<code>README.md</code>。第 3、5、6、7 節的示意圖依本單元數字繪製於 <a href="https://www.figma.com/design/LU76FDo4H2sNFsOO8KQuJI" target="_blank" rel="noopener">Figma 原始檔</a>，圖檔存於 <code>resources/unit-mapping-diagram.png</code>、<code>resources/safe-area-diagram.png</code>、<code>resources/touch-target-diagram.png</code>、<code>resources/tabbar-spec-diagram.png</code>。第 3 節的 Figma 單位對應與 SP 縮放試算取自 <code>resources/參考資料html/</code> 內「px、pt、ppi、dpi、dp、sp 名詞解釋」子頁；該頁另列的裝置畫布尺寸與 <code>App 設計.pdf</code> 的機型尺寸表數字不一致（iPhone 14 Pro 兩份寫法不同），因此未採用，以 <code>App 設計.pdf</code> 第 4 節既有數字為準。</li>
-        <li>第 2 節「設計指南是建議，上架規範是規定」整理自業界實務討論（非官方文件逐條引用），提醒設計指南與上架審查規範是兩件不同的事；完整版見 <a href="guideline-vs-policy.html">guideline-vs-policy.html</a>。</li>
-        <li>第 12 節的三份提示詞是本單元新寫的教學設計，沿用 <code>Unit_01/persona-prompt.html</code>、<code>Unit_02/interview-prompt.html</code> 已建立的「AI 協作提示詞頁」寫法與版型，非取自外部資料來源。</li>
+        <li>本單元基礎資料：<code>resources/App 設計.pdf</code>（iPhone 機型尺寸表，對應第 8 節；安全區邊距數字，對應第 9 節）、<code>resources/sp-dp.md</code>（dp／sp 的定義與使用場景，對應第 7 節）、<code>resources/常見標籤類型.md</code>（iOS 標籤類型、SF 字級表、行高與邊距，對應第 12 節）、<code>resources/參考資料.md</code> 與 <code>resources/參考資料html/</code>（官方連結、Android 字級表、圖示輸出換算、Tab Bar 規格與雙平台對照，對應第 7、10、12、15 節與本清單）、<code>README.md</code>。第 7、9、10、11 節的示意圖依本單元數字繪製於 <a href="https://www.figma.com/design/LU76FDo4H2sNFsOO8KQuJI" target="_blank" rel="noopener">Figma 原始檔</a>，圖檔存於 <code>resources/unit-mapping-diagram.png</code>、<code>resources/safe-area-diagram.png</code>、<code>resources/touch-target-diagram.png</code>、<code>resources/tabbar-spec-diagram.png</code>。第 7 節的 Figma 單位對應與 SP 縮放試算取自 <code>resources/參考資料html/</code> 內「px、pt、ppi、dpi、dp、sp 名詞解釋」子頁；該頁另列的裝置畫布尺寸與 <code>App 設計.pdf</code> 的機型尺寸表數字不一致（iPhone 14 Pro 兩份寫法不同），因此未採用，以 <code>App 設計.pdf</code> 第 8 節既有數字為準。</li>
+        <li>第 6 節「設計指南是建議，上架規範是規定」整理自業界實務討論（非官方文件逐條引用），提醒設計指南與上架審查規範是兩件不同的事；完整版見 <a href="guideline-vs-policy.html">guideline-vs-policy.html</a>。</li>
+        <li>第 16 節的三份提示詞是本單元新寫的教學設計，沿用 <code>Unit_01/persona-prompt.html</code>、<code>Unit_02/interview-prompt.html</code> 已建立的「AI 協作提示詞頁」寫法與版型，非取自外部資料來源。</li>
       </ul>
     </div>
 

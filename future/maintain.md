@@ -362,3 +362,16 @@ grep -n "sec-title" Unit_01/design-thinking.html
 **修正：** 依用戶指示「課程大綱 第三小時 改為設計思考」，把 `.a-time`／`.a-desc` 改成「設計思考 / Design Thinking」與「雙鑽石模型與五階段（同理、定義、發想、原型、測試），搭配 AI 在各階段的協作方式」，跟下方既有的 `design-thinking.html` 連結內容對齊。改完起本機 http server，用 Chrome 自動化截圖確認畫面顯示正確。
 **影響範圍：**
 - `Unit_01/slides.html` — Slide 3「第 3 小時」agenda-card 文字
+
+---
+
+## 2026-11-17
+
+### 1. Unit 09 簡報 localStorage key 誤用 unit11
+**狀態：** 已修復
+**問題：** `Unit_09/slides.html` 的 `storageKey` 是 `'unit11-slide-index'`，跟 Unit 11 簡報共用記憶頁碼，開 Unit 09 會跳到 Unit 11 上次看到的頁數。
+**原因：** 簡報是從舊「APP UI 設計規範」（舊 Unit 11）搬過來，key 沒跟著改。
+**佐證：** `grep -n "unit11-slide-index" Unit_09/slides.html` → 736 行。
+**修正：** 改為 `'unit09-slide-index'`。
+**影響範圍：**
+- `Unit_09/slides.html` — storageKey
