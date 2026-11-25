@@ -32,11 +32,12 @@ description: 依課程 Unit 06–08 規範審查 UI/UX 介面並產出改善報�
 | 網址 | 有瀏覽器工具時打開頁面截圖並讀取 computed style；沒有就請使用者提供截圖。 |
 | HTML / CSS / React | 讀原始碼，執行 `scripts/css_audit.py <檔案或資料夾>` 抓間距、行高、字級種類與寫死色碼；有實際畫面更好。 |
 
-**對比度一定要計算，不要目測**：
+**對比度一定要計算，不要目測**（路徑相對於本 Skill 資料夾）：
 ```bash
-python3 ~/.claude/skills/uiux-check/scripts/contrast.py "#767676" "#FFFFFF"
-python3 ~/.claude/skills/uiux-check/scripts/contrast.py "#F59E0B" "#FFFFFF" --large   # 大字門檻 3:1
+python3 scripts/contrast.py "#767676" "#FFFFFF"
+python3 scripts/contrast.py "#F59E0B" "#FFFFFF" --large   # 大字門檻 3:1
 ```
+無法執行程式時，改用 WebAIM Contrast Checker 等工具計算，並在報告註明。
 截圖上取不到精確色碼時，寫出估計色碼並註明「估計值」。
 
 ### 3. 逐條檢查
