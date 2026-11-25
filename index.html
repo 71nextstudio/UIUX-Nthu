@@ -363,18 +363,45 @@ body {
   max-width: var(--max-w);
   margin: 0 auto;
 }
-.refs ul { list-style: none; }
-.refs li {
-  font-size: .9rem;
-  color: var(--muted);
-  line-height: 1.6;
-  margin-bottom: 10px;
-  padding-left: 18px;
-  position: relative;
+.refs ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
 }
-.refs li::before { content: '-'; position: absolute; left: 0; color: var(--border); }
-.refs a { color: var(--accent); text-decoration: none; }
-.refs a:hover { text-decoration: underline; }
+.refs a {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  padding: 16px 18px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  color: var(--dark);
+  text-decoration: none;
+  transition: border-color .2s, box-shadow .2s, transform .2s;
+}
+.refs a:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 16px rgba(0,0,0,.06);
+  transform: translateY(-2px);
+}
+.refs a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.ref-tag {
+  align-self: flex-start;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--accent);
+  background: rgba(0,102,204,.09);
+  padding: 2px 9px;
+  border-radius: 20px;
+}
+.ref-title { font-size: .95rem; font-weight: 600; line-height: 1.45; }
+.ref-desc { font-size: .84rem; color: var(--muted); line-height: 1.6; }
+.ref-src { margin-top: auto; font-size: 12px; color: var(--muted); }
+.ref-src::after { content: ' ↗'; }
 
 /* ── Footer note ─────────────────────────── */
 .foot {
@@ -646,11 +673,42 @@ body {
 
 <div class="refs">
   <ul>
-    <li><a href="https://www.71next.com/userDoc/category/ui/laws-of-ux/" target="_blank" rel="noopener">使用者介面定律</a></li>
-    <li><a href="https://www.71next.com/userDoc/%e8%a8%ad%e8%a8%88%e6%80%9d%e8%80%83%e9%81%8e%e7%a8%8b%e7%9a%84%e4%ba%94%e5%80%8b%e9%9a%8e%e6%ae%b5%e8%88%87%e5%95%86%e6%a5%ad%e7%ad%96%e7%95%a5/" target="_blank" rel="noopener">設計思考過程的五個階段與商業策略</a></li>
-    <li><a href="https://www.youtube.com/watch?v=2lXh2n0aPyw" target="_blank" rel="noopener">設計思考影片：讓人們主動爬樓梯</a></li>
-    <li><a href="https://www.youtube.com/watch?v=3AyEYgSt6vs" target="_blank" rel="noopener">探索需求影片</a></li>
-    <li><a href="https://www.behance.net/search/projects?search=redesign+ux+user+interface&tracking_source=typeahead_search_suggestion&country=TW" target="_blank" rel="noopener">Behance：Redesign UX/UI 案例搜尋</a></li>
+    <li><a href="https://www.71next.com/userDoc/category/ui/laws-of-ux/" target="_blank" rel="noopener">
+      <span class="ref-tag">文章</span>
+      <span class="ref-title">使用者介面定律</span>
+      <span class="ref-src">71next.com</span>
+    </a></li>
+    <li><a href="https://www.71next.com/userDoc/%e8%a8%ad%e8%a8%88%e6%80%9d%e8%80%83%e9%81%8e%e7%a8%8b%e7%9a%84%e4%ba%94%e5%80%8b%e9%9a%8e%e6%ae%b5%e8%88%87%e5%95%86%e6%a5%ad%e7%ad%96%e7%95%a5/" target="_blank" rel="noopener">
+      <span class="ref-tag">文章</span>
+      <span class="ref-title">設計思考過程的五個階段與商業策略</span>
+      <span class="ref-src">71next.com</span>
+    </a></li>
+    <li><a href="https://www.youtube.com/watch?v=2lXh2n0aPyw" target="_blank" rel="noopener">
+      <span class="ref-tag">影片</span>
+      <span class="ref-title">設計思考影片：讓人們主動爬樓梯</span>
+      <span class="ref-src">YouTube</span>
+    </a></li>
+    <li><a href="https://www.youtube.com/watch?v=3AyEYgSt6vs" target="_blank" rel="noopener">
+      <span class="ref-tag">影片</span>
+      <span class="ref-title">探索需求影片</span>
+      <span class="ref-src">YouTube</span>
+    </a></li>
+    <li><a href="https://www.behance.net/search/projects?search=redesign+ux+user+interface&tracking_source=typeahead_search_suggestion&country=TW" target="_blank" rel="noopener">
+      <span class="ref-tag">案例</span>
+      <span class="ref-title">Behance：Redesign UX/UI 案例搜尋</span>
+      <span class="ref-src">Behance</span>
+    </a></li>
+    <li><a href="figma-template.html" target="_blank" rel="noopener">
+      <span class="ref-tag">範本</span>
+      <span class="ref-title">Figma Design System 範本（Tokens、Plugin 下載）</span>
+      <span class="ref-src">Unit 09 · 本站</span>
+    </a></li>
+    <li><a href="skills/README.md" target="_blank" rel="noopener">
+      <span class="ref-tag">Skill</span>
+      <span class="ref-title">UI/UX 介面審查 Skill</span>
+      <span class="ref-desc">依十大易用性原則、完形心理學與 Laws of UX、介面視覺基礎審查截圖、Figma 稿或程式碼，產出問題清單與修正建議。</span>
+      <span class="ref-src">Claude Skill · 本站</span>
+    </a></li>
   </ul>
 </div>
 

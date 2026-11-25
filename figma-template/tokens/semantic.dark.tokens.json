@@ -1,0 +1,182 @@
+{
+  "color": {
+    "bg": {
+      "canvas": {
+        "$type": "color",
+        "$value": "{slate.900}"
+      },
+      "surface": {
+        "$type": "color",
+        "$value": "{slate.800}"
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{slate.700}"
+      }
+    },
+    "text": {
+      "primary": {
+        "$type": "color",
+        "$value": "{slate.50}"
+      },
+      "secondary": {
+        "$type": "color",
+        "$value": "{slate.300}"
+      },
+      "disabled": {
+        "$type": "color",
+        "$value": "{slate.500}"
+      },
+      "link": {
+        "$type": "color",
+        "$value": "{teal.300}"
+      },
+      "error": {
+        "$type": "color",
+        "$value": "{red.400}"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "{amber.400}"
+      },
+      "success": {
+        "$type": "color",
+        "$value": "{green.400}"
+      }
+    },
+    "border": {
+      "default": {
+        "$type": "color",
+        "$value": "{slate.700}"
+      },
+      "strong": {
+        "$type": "color",
+        "$value": "{slate.500}"
+      },
+      "focus": {
+        "$type": "color",
+        "$value": "{blue.400}"
+      },
+      "error": {
+        "$type": "color",
+        "$value": "{red.400}"
+      }
+    },
+    "status": {
+      "warning-bg": {
+        "$type": "color",
+        "$value": "{amber.900}"
+      },
+      "error-bg": {
+        "$type": "color",
+        "$value": "{red.900}"
+      },
+      "success-bg": {
+        "$type": "color",
+        "$value": "{green.900}"
+      }
+    }
+  },
+  "btn": {
+    "primary": {
+      "bg": {
+        "$type": "color",
+        "$value": "{teal.400}"
+      },
+      "bg-hover": {
+        "$type": "color",
+        "$value": "{teal.300}"
+      },
+      "bg-pressed": {
+        "$type": "color",
+        "$value": "{teal.200}"
+      },
+      "text": {
+        "$type": "color",
+        "$value": "{slate.900}"
+      }
+    },
+    "secondary": {
+      "bg": {
+        "$type": "color",
+        "$value": "{slate.800}"
+      },
+      "bg-hover": {
+        "$type": "color",
+        "$value": "{slate.700}"
+      },
+      "bg-pressed": {
+        "$type": "color",
+        "$value": "{slate.600}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{teal.400}"
+      },
+      "text": {
+        "$type": "color",
+        "$value": "{teal.300}"
+      }
+    },
+    "disabled": {
+      "bg": {
+        "$type": "color",
+        "$value": "{slate.700}"
+      },
+      "text": {
+        "$type": "color",
+        "$value": "{slate.500}"
+      }
+    }
+  },
+  "input": {
+    "bg": {
+      "$type": "color",
+      "$value": "{slate.800}"
+    },
+    "border": {
+      "$type": "color",
+      "$value": "{slate.600}"
+    },
+    "placeholder": {
+      "$type": "color",
+      "$value": "{slate.500}"
+    }
+  },
+  "radius": {
+    "button": {
+      "$type": "number",
+      "$value": "{radius.md}"
+    },
+    "input": {
+      "$type": "number",
+      "$value": "{radius.md}"
+    },
+    "card": {
+      "$type": "number",
+      "$value": "{radius.lg}"
+    },
+    "badge": {
+      "$type": "number",
+      "$value": "{radius.full}"
+    }
+  },
+  "space": {
+    "component-gap": {
+      "$type": "number",
+      "$value": "{spacing.2}"
+    },
+    "input-padding-x": {
+      "$type": "number",
+      "$value": "{spacing.3}"
+    },
+    "card-padding": {
+      "$type": "number",
+      "$value": "{spacing.6}"
+    },
+    "section-gap": {
+      "$type": "number",
+      "$value": "{spacing.12}"
+    }
+  }
+}

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 09 範本 · Figma Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #fbfbfd; --dark: #1d1d1f; --muted: #6e6e73; --accent: #0066cc;
+  --surface: #f5f5f7; --card: #e8e8ed; --border: #d2d2d7; --max-w: 820px;
+}
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", sans-serif; background: var(--bg); color: var(--dark); -webkit-font-smoothing: antialiased; padding: 0 16px 96px; line-height: 1.6; }
+.wrap { max-width: var(--max-w); margin: 0 auto; }
+
+.topbar { padding: 32px 0 0; display: flex; justify-content: space-between; align-items: center; }
+.back-link { font-size: 12px; font-weight: 600; color: var(--accent); text-decoration: none; letter-spacing: .04em; }
+.back-link::before { content: '← '; }
+.top-links { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
+.top-links a { font-size: 12px; font-weight: 600; color: var(--accent); text-decoration: none; }
+.top-links a:hover { text-decoration: underline; }
+.unit-pill { font-size: 11px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--accent); background: rgba(0,102,204,.09); padding: 4px 11px; border-radius: 20px; }
+
+header { padding: 48px 0 32px; border-bottom: 1px solid var(--border); }
+.overline { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -.04em; line-height: 1.1; }
+.lead { font-size: 1.1rem; color: var(--muted); margin-top: 16px; }
+.meta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; }
+.meta span { font-size: 12px; font-weight: 600; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 4px 12px; }
+
+section { padding: 40px 0 8px; }
+h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -.02em; margin-bottom: 16px; display: flex; align-items: baseline; gap: 12px; }
+h2 .n { font-size: inherit; font-weight: 700; color: var(--accent); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+p { margin-bottom: 12px; }
+p a { color: var(--accent); font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(0,102,204,.3); }
+p a:hover { border-bottom-color: var(--accent); }
+.hl { color: var(--accent); font-weight: 600; }
+code { font-family: "SF Mono", Menlo, monospace; font-size: .88em; background: var(--surface); border: 1px solid var(--card); padding: 1px 6px; border-radius: 5px; overflow-wrap: anywhere; }
+kbd { font-family: inherit; font-size: .85em; font-weight: 600; background: #fff; border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 6px; padding: 1px 7px; white-space: nowrap; }
+
+.callout { background: rgba(0,102,204,.06); border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; }
+.callout.warn { background: rgba(207,34,46,.05); border-color: #cf222e; }
+.callout p:last-child { margin-bottom: 0; }
+
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; font-weight: 600; font-size: 15px; text-decoration: none; padding: 12px 24px; border-radius: 10px; margin: 8px 0 16px; }
+.btn-primary:hover { background: #0058b0; }
+
+.files { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 8px; }
+.file { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+.file b { display: block; font-size: 12px; color: var(--accent); letter-spacing: .04em; margin-bottom: 4px; }
+.file span { font-size: 13px; color: var(--muted); line-height: 1.5; display: block; }
+
+.steps { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
+.step { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 20px 24px; }
+.step-tag { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; display: block; }
+.step ul, .step ol { padding-left: 20px; }
+.step li { margin-bottom: 4px; }
+
+.spec { width: 100%; border-collapse: collapse; margin: 8px 0 16px; font-size: 14px; }
+.spec th, .spec td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--card); vertical-align: top; }
+.spec th { font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+.table-scroll { overflow-x: auto; }
+
+.dl-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+.dl-list li { display: flex; justify-content: space-between; gap: 16px; align-items: center; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 12px 12px 12px 16px; }
+.dl-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.dl-info b { font-size: 14px; font-weight: 600; overflow-wrap: anywhere; }
+.dl-info span { color: var(--muted); font-size: 12px; }
+.dl-btn { display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; background: rgba(0,102,204,.08); color: var(--accent); font-size: 13px; font-weight: 600; text-decoration: none; padding: 8px 14px; border-radius: 8px; transition: background .15s, color .15s; }
+.dl-btn:hover { background: var(--accent); color: #fff; }
+.dl-btn svg, .btn-primary svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+.checklist { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+.checklist li { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px 10px 40px; position: relative; font-size: 14px; cursor: pointer; user-select: none; }
+.checklist li::before { content: ''; position: absolute; left: 14px; top: 13px; width: 16px; height: 16px; border: 2px solid var(--border); border-radius: 4px; }
+.checklist li.checked { color: var(--muted); background: rgba(0,102,204,.05); border-color: rgba(0,102,204,.3); }
+.checklist li.checked::before { background: var(--accent); border-color: var(--accent); }
+.checklist li.checked::after { content: '✓'; position: absolute; left: 17px; top: 9px; color: #fff; font-size: 12px; font-weight: 700; }
+
+@media (max-width: 640px) {
+  .checklist { grid-template-columns: 1fr; }
+  .step { padding: 16px 18px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back-link" href="index.html">回到課程首頁</a>
+    <div class="top-links">
+      <a href="Unit_09/slides.html">Unit 09 簡報</a>
+      <a href="Unit_09/article.html">Unit 09 講義</a>
+      <span class="unit-pill">Unit 09 · 範本</span>
+    </div>
+  </div>
+
+  <header>
+    <p class="overline">Figma Template · Design System</p>
+    <h1>Figma Design System 範本</h1>
+    <p class="lead">一鍵在你的 Figma 檔案裡建立完整的 Variables、Styles 與元件庫。Light / Dark 兩種模式都已經設定好，可以直接拿來練習，也可以當作自己作品的起點。</p>
+    <div class="meta">
+      <span>106 個 Variables</span>
+      <span>13 個文字樣式</span>
+      <span>45 個按鈕變體</span>
+      <span>Light / Dark 模式</span>
+    </div>
+  </header>
+
+  <section>
+    <h2><span class="n">01</span>範本裡有什麼</h2>
+    <div class="files">
+      <div class="file"><b>Variables</b><span><strong>Primitive</strong>：色票、間距、圓角、字級。<br><strong>Semantic</strong>：Light / Dark 兩個 Mode，全部指向 Primitive。</span></div>
+      <div class="file"><b>Styles</b><span>文字樣式（Display ～ Caption、Button）、陰影與 Focus 外框、漸層。</span></div>
+      <div class="file"><b>📘 Foundations</b><span>色票、語意色 Light / Dark 對照、字級階梯、陰影的說明頁。</span></div>
+      <div class="file"><b>🧩 Components</b><span>Icon、Button、Input Field、Badge，以及由它們組成的 Booking Card。</span></div>
+      <div class="file"><b>🎨 Preview</b><span>同一張 Booking Card 的 Light 與 Dark 模式並排對照。</span></div>
+    </div>
+
+    <h3 style="margin-top:24px">元件屬性一覽</h3>
+    <div class="table-scroll">
+      <table class="spec">
+        <thead><tr><th>元件</th><th>Variant</th><th>Boolean</th><th>Text</th><th>Instance Swap</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Button</strong></td><td>Type：Primary / Secondary / Ghost<br>Size：Large 48 / Medium 40 / Small 32<br>State：Default / Hover / Pressed / Focus / Disabled</td><td>Show Left Icon<br>Show Right Icon</td><td>Label</td><td>Left Icon<br>Right Icon</td></tr>
+          <tr><td><strong>Input Field</strong></td><td>State：Default / Focus / Error / Disabled</td><td>Show Required<br>Show Left Icon<br>Show Helper Text</td><td>Label<br>Placeholder<br>Helper Text</td><td>Left Icon</td></tr>
+          <tr><td><strong>Badge</strong></td><td>Status：Neutral / Success / Warning / Error</td><td>—</td><td>Label</td><td>—</td></tr>
+          <tr><td><strong>Booking Card</strong></td><td colspan="4">Organism：由 Badge、Input Field、Button 的實例組成，示範原子設計的組裝方式。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">02</span>最快的方式：直接複製 Figma 範本</h2>
+    <p>範本檔案已經建好了。打開連結後複製一份到自己的帳號，就能直接練習，網頁版或桌面版 Figma 都可以。</p>
+    <a class="btn-primary" href="https://www.figma.com/design/J6gMn8zPlpR6gX62ZQMnRK" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>在 Figma 打開範本檔案</a>
+    <div class="steps">
+      <div class="step">
+        <span class="step-tag">Step 1 · 打開範本</span>
+        <p>點上方按鈕，登入你的 Figma 帳號。範本是唯讀的，你可以瀏覽，但不能直接修改。</p>
+      </div>
+      <div class="step">
+        <span class="step-tag">Step 2 · 複製到自己的草稿</span>
+        <p>點畫面上方檔案名稱旁的 <kbd>▾</kbd>，選擇 <kbd>Duplicate to your drafts</kbd>。複製出來的檔案就是你的，可以自由修改，原始範本不會被改到。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">03</span>另一種方式：用插件在自己的檔案建立</h2>
+    <p>想在自己已經開好的空白檔案裡建立，或想看看整套系統是怎麼用程式產生的，可以改用範本插件。</p>
+    <a class="btn-primary" href="figma-template/unit09-design-system-plugin.zip" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>下載插件 unit09-design-system-plugin.zip</a>
+    <div class="callout warn">
+      <p><strong>需要 Figma 桌面版（Desktop App）。</strong>網頁版 Figma 不能從本機匯入插件。還沒安裝的話，先到 Figma 官網下載桌面版。</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="step-tag">Step 1 · 解壓縮</span>
+        <p>把下載的 zip 解壓縮，會得到 <code>unit09-design-system-plugin</code> 資料夾，裡面有 <code>manifest.json</code> 與 <code>code.js</code>。資料夾放在固定的位置，之後不要移動或刪除。</p>
+      </div>
+      <div class="step">
+        <span class="step-tag">Step 2 · 開一個新的設計檔</span>
+        <p>在 Figma 桌面版建立一個<strong>新的空白 Design 檔案</strong>。插件會檢查檔案裡是否已經有同名的變數集合，有的話就不會執行，避免重複建立。</p>
+      </div>
+      <div class="step">
+        <span class="step-tag">Step 3 · 匯入插件</span>
+        <ol>
+          <li>在畫布上按右鍵，或打開左上角的 Figma 選單。</li>
+          <li>選擇 <kbd>Plugins</kbd> → <kbd>Development</kbd> → <kbd>Import plugin from manifest…</kbd></li>
+          <li>選取資料夾裡的 <code>manifest.json</code>。</li>
+        </ol>
+        <p style="margin-top:8px">匯入只需要做一次，之後在任何檔案都能從 <kbd>Plugins</kbd> → <kbd>Development</kbd> 找到它。</p>
+      </div>
+      <div class="step">
+        <span class="step-tag">Step 4 · 執行</span>
+        <p>選擇 <kbd>Plugins</kbd> → <kbd>Development</kbd> → <kbd>Unit 09 · Design System 範本</kbd>。等待 10–30 秒，畫面下方出現「✅ 完成！」後，Figma 會自動切到 🎨 Preview 頁面。</p>
+        <p>如果出現「❌ 發生錯誤」，請把訊息截圖，連同你的 Figma 版本一起回報。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">04</span>打開範本後，先確認這幾件事</h2>
+    <p>點一下項目可以打勾。</p>
+    <ul class="checklist">
+      <li>Variables 面板裡有 Primitive 與 Semantic 兩個集合</li>
+      <li>Semantic 集合有 Light、Dark 兩欄</li>
+      <li>Preview 頁的兩張卡片，一張亮色、一張深色</li>
+      <li>把 <code>teal/700</code> 改成別的顏色，Light 模式的按鈕會一起改變</li>
+      <li>選取 Booking Card 裡的按鈕，右側面板看得到 Type、Size、State</li>
+      <li>打開 Show Left Icon，再用 Left Icon 換一個圖示</li>
+    </ul>
+    <div class="callout">
+      <p><strong>小提醒：</strong>Primitive 變數刻意設定成不會出現在選色器裡。幫圖層上色時，請從 Semantic 變數挑選，這就是<a href="Unit_09/article.html#s3">講義 §3</a> 說的「元件只綁語意層」。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">05</span>同一份 Token 的其他格式</h2>
+    <p>插件、JSON 與 CSS 都由同一份資料產生，名稱一一對應。交付給工程師或用在其他工具時可以直接使用。</p>
+    <ul class="dl-list">
+      <li><div class="dl-info"><b>primitive.tokens.json</b><span>W3C Design Tokens 格式 · 基礎層</span></div><a class="dl-btn" href="figma-template/tokens/primitive.tokens.json" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>下載</a></li>
+      <li><div class="dl-info"><b>semantic.light.tokens.json</b><span>語意層 · Light Mode</span></div><a class="dl-btn" href="figma-template/tokens/semantic.light.tokens.json" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>下載</a></li>
+      <li><div class="dl-info"><b>semantic.dark.tokens.json</b><span>語意層 · Dark Mode</span></div><a class="dl-btn" href="figma-template/tokens/semantic.dark.tokens.json" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>下載</a></li>
+      <li><div class="dl-info"><b>tokens.css</b><span>CSS 變數 · 加上 data-theme="dark" 切換深色</span></div><a class="dl-btn" href="figma-template/tokens.css" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>下載</a></li>
+    </ul>
+
+    <h3 style="margin-top:24px">命名怎麼對應</h3>
+    <div class="table-scroll">
+      <table class="spec">
+        <thead><tr><th>Figma Variable</th><th>JSON 路徑</th><th>CSS 變數</th></tr></thead>
+        <tbody>
+          <tr><td><code>teal/700</code></td><td><code>teal.700</code></td><td><code>--teal-700</code></td></tr>
+          <tr><td><code>color/bg/surface</code></td><td><code>color.bg.surface</code></td><td><code>--color-bg-surface</code></td></tr>
+          <tr><td><code>btn/primary/bg</code></td><td><code>btn.primary.bg</code></td><td><code>--btn-primary-bg</code></td></tr>
+          <tr><td><code>radius/card</code></td><td><code>radius.card</code></td><td><code>--radius-card</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Figma 用斜線 <code>/</code> 分組，JSON 用巢狀物件，CSS 用連字號 <code>-</code>。三者的名稱一樣，這就是「單一真相來源」。原始值與語意值怎麼分層，可以回頭看<a href="Unit_09/article.html#s2">講義 §2 Design Tokens</a>。</p>
+  </section>
+
+</div>
+<script>
+document.querySelectorAll('.checklist li').forEach(li => {
+  li.addEventListener('click', () => li.classList.toggle('checked'));
+});
+</script>
+</body>
+</html>
